@@ -1,20 +1,27 @@
-class Api::FlightsController < ApiController
+class Api::FlightsController < Api::ApiController
   def index
     @flights = Flight.all
-    render @flights
+    render json: @flights
   end
 
   def create
     @flight = Flight.new(flight_params)
+    @flight.owner = current_user
     if @flight.save
-      render @flight
+      render json: @flight
     else
-      render @flight.errors.full_messages, status: 422
+      render json: @flight.errors.full_messages, status: 422
     end
   end
 
   def show
     @flight = Flight.find(params[:id])
-    render @flight
+    render json: @flight
+  end
+
+  private
+
+  def flight_params
+    params.require(:flight).permit(:departure_airport_id, :departure_date)
   end
 end
