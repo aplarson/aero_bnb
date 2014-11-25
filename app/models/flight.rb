@@ -8,10 +8,14 @@
 #  departure_airport_id :integer          not null
 #  created_at           :datetime
 #  updated_at           :datetime
+#  aircraft             :string(255)      not null
+#  description          :text
+#  passengers           :integer          not null
+#  price                :integer          not null
 #
 
 class Flight < ActiveRecord::Base
-  validates :owner, :departure_date, :departure_airport, presence: true
+  validates :owner, :departure_date, :departure_airport, :aircraft, :passengers, :price, presence: true
 
   belongs_to(
     :owner,

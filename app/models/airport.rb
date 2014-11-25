@@ -7,6 +7,7 @@
 #  iata_code  :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  name       :string(255)      not null
 #
 
 class Airport < ActiveRecord::Base

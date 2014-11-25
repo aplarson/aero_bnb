@@ -8,6 +8,10 @@
 #  departure_airport_id :integer          not null
 #  created_at           :datetime
 #  updated_at           :datetime
+#  aircraft             :string(255)      not null
+#  description          :text
+#  passengers           :integer          not null
+#  price                :integer          not null
 #
 
 require 'test_helper'
