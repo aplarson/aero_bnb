@@ -4,6 +4,9 @@ window.AeroBnb = {
   Views: {},
   Routers: {},
   initialize: function() {
+    var $rootEl = $('#main');
+    var router = new AeroBnb.Routers.Router($rootEl);
+    Backbone.history.start();
   }
 };
 
