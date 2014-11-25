@@ -1,0 +1,23 @@
+.search-page-el {
+  float: left;
+}
+
+#main {
+  min-height: 500px;
+}
+
+#map {
+  width: 40%;
+  height: 100%;
+  background: blue;
+}
+
+#search-container {
+  width: 60%;
+  background: red;
+  height: 100%;
+}
+
+#filters, #listings {
+  width: 100%;
+}
