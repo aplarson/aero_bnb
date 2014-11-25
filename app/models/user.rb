@@ -19,6 +19,13 @@ class User < ActiveRecord::Base
   validates :username, :session_token, :email, uniqueness: true
 
   after_initialize :ensure_session_token
+
+  has_many(
+    :owned_flights,
+    class_name: "Flight",
+    foreign_key: :owner_id,
+    primary_key: :id
+  )
   
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
