@@ -1,0 +1,15 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container container-fluid">
+  </div>
+
+  <div class="collapse navbar-collapse" id="aero-navbar">
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li><%= button_to "Sign out", session_url, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Log in", new_session_url %></li>
+        <li><%= link_to "Sign up", new_user_url %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
