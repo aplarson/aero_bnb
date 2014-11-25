@@ -12,5 +12,3 @@ default: &default
 development:
   <<: *default
   database: aero_bnb_dev
-
-
