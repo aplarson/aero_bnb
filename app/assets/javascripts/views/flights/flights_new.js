@@ -22,7 +22,8 @@ AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
   },
 
   newAirport: function (event) {
-    var view = new 
+    var view = new AeroBnb.Views.AirportsNew();
+    this.$('#airport-creation').html(view.render().$el);
   },
 
   newFlight: function (event) {

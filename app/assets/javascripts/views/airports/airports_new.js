@@ -14,5 +14,6 @@ AeroBnb.Views.AirportsNew = Backbone.View.extend({
   createAirport: function (event) {
     event.preventDefault();
     var params = $(event.target).serializeJSON();
+    console.log(params);
   }
 });
