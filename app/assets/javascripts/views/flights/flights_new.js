@@ -25,7 +25,7 @@ AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
     var flight = new AeroBnb.Models.Flight(params["flight"]);
     flight.save([], {
       success: function () {
-        Backbone.history.navigate('', { trigger: true });
+        Backbone.history.navigate('flights', { trigger: true });
       }
     })
   }
