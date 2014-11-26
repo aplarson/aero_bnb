@@ -6,6 +6,7 @@ AeroBnb.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'landing',
     'flights': 'searchFlights',
+    'flights/new': 'newFlight',
     'flights/:id': 'showFlight'
   },
 
@@ -33,6 +34,11 @@ AeroBnb.Routers.Router = Backbone.Router.extend({
     var flight = new AeroBnb.Models.Flight({ id: id });
     flight.fetch();
     var view = new AeroBnb.Views.FlightsShow({ flight: flight });
+    this.swapView(view);
+  },
+
+  newFlight: function () {
+    var view = new AeroBnb.Views.FlightsNew()
     this.swapView(view);
   }
 });

@@ -1,0 +1,32 @@
+<h2>List a flight!</h2>
+
+<form id="new-flight">
+
+  <label>Aircraft
+    <input type="text" name="flight[aircraft]">
+  </label>
+
+  <label>Description
+    <textarea name="flight[description]"></textarea>
+  </label>
+
+  <label>Departure Date
+    <input type="date" name="flight[departure_date]">
+  </label>
+
+  <label>Departure Airport
+    <select name="flight[departure_airport_id]">
+    </select>
+  </label>
+
+  <label>Number of Passengers
+    <input type="number" name="flight[passengers]">
+  </label>
+
+  <label>Price (USD)
+    <input type="number" name="flight[price]">
+  </label>
+
+  <input type="submit" value="Post Flight!">
+
+</form>
