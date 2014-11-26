@@ -1,6 +1,10 @@
 AeroBnb.Views.AirportsNew = Backbone.View.extend({
   template: JST["airports/new"],
 
+  initialize: function (options) {
+    this.airports = options.airports;
+  },
+
   render: function () {
     var content = this.template();
     this.$el.html(content);
@@ -14,6 +18,12 @@ AeroBnb.Views.AirportsNew = Backbone.View.extend({
   createAirport: function (event) {
     event.preventDefault();
     var params = $(event.target).serializeJSON();
-    console.log(params);
+    var airport = new AeroBnb.Models.Airport(params["airport"]);
+    airport.save({}, {
+      success: function () {
+        this.airports.add(airport);
+        this.remove();
+      }.bind(this)
+    })
   }
 });
