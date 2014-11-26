@@ -23,7 +23,13 @@ class Api::FlightsController < Api::ApiController
       @flights = @flights.where('departure_date = ?', params[:departure_date])
     end
     if params[:min_price]
-      @flights = @flights.where('price > ?', params[:min_price])
+      @flights = @flights.where('price >= ?', params[:min_price])
+    end
+    if params[:max_price]
+      @flights = @flights.where('price <= ?', params[:max_price])
+    end
+    if params[:passengers]
+      @flights = @flights.where('passengers >= ?', params[:passengers])
     end
     render json: @flights
   end
