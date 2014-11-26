@@ -1,15 +1,15 @@
-AeroBnb.Views.FlightsSearch = Backbone.View.extend({
+AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   template: JST["flights/search"],
 
   initialize: function (options) {
     this.flights = options.flights;
-    this.listenTo(this.flights, 'sync', this.render);
+    this.listenTo(this.flights, 'add', this.addFlight);
   },
 
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    this.addFlights();
+    
     return this;
   },
 
@@ -20,13 +20,14 @@ AeroBnb.Views.FlightsSearch = Backbone.View.extend({
     })
   },
 
+  addFlight: function (flight) {
+    var view = new AeroBnb.Views.FlightsSearchItem({ flight: flight });
+    this.addSubview('#listings', view)
+  },
+
   addFlights: function () {
-    this._flights = [];
-    this.$('#listings').empty();
     this.flights.each(function (flight) {
-      var view = new AeroBnb.Views.FlightsSearchItem({ flight: flight });
-      this.$('#listings').append(view.render().$el);
-      this._flights.push(view);
+      this.addFlight(flight);
     }.bind(this))
   }
 })
