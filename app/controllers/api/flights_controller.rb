@@ -17,6 +17,9 @@ class Api::FlightsController < Api::ApiController
     @flight = Flight.includes(:departure_airport).find(params[:id])
   end
 
+  def search
+  end
+
   private
 
   def flight_params
