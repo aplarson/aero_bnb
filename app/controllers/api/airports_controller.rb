@@ -17,4 +17,10 @@ class Api::AirportsController < Api::ApiController
       render json: @airport.errors
     end
   end
+
+  private
+
+  def airport_params
+    params.require(:airport).permit(:name, :iata_code, :icao_code)
+  end
 end
