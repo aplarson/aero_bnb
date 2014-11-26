@@ -6,7 +6,7 @@ AeroBnb.Views.FlightsFilter = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template();
+    var content = this.template({ params: this.queryParams });
     this.$el.html(content);
     return this;
   }
