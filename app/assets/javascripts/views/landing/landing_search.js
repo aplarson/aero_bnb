@@ -14,6 +14,11 @@ AeroBnb.Views.LandingSearch = Backbone.View.extend({
   showResults: function (event) {
     event.preventDefault();
     var params = $(event.target).serializeJSON();
-    console.log(params);
+    var queryEls = [];
+    _(params).each(function (val, key) {
+      queryEls.push(key + '=' + val)
+    })
+    var query = queryEls.join('&');
+    Backbone.history.navigate('flights/search/' + query, { trigger: true })
   }
 });

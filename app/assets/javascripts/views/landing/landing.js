@@ -2,7 +2,6 @@ AeroBnb.Views.LandingView = Backbone.View.extend({
   template: JST["landing/landing"],
 
   events: {
-    'submit #landing-search-form': 'showFlights'
   },
 
   render: function () {
@@ -11,10 +10,5 @@ AeroBnb.Views.LandingView = Backbone.View.extend({
     var searchBar = new AeroBnb.Views.LandingSearch();
     this.$('#landing-search-bar').html(searchBar.render().$el);
     return this;
-  },
-
-  showFlights: function (event) {
-    event.preventDefault();
-    Backbone.history.navigate('flights', { trigger: true })
   }
 });
