@@ -3,12 +3,13 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     var queryParams = this.parseQueryString(options.queryString);
+    var view = this;
     $.ajax({
       data: queryParams,
       dataType: 'json',
       url: '/api/flights/search',
       success: function (response) {
-        console.log(response);
+        view.populateResults(response);
       }
     })
     
@@ -35,9 +36,14 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   },
 
   addFlights: function () {
-    this.flights.each(function (flight) {
+    this.flights.forEach(function (flight) {
       this.addFlight(flight);
     }.bind(this))
+  },
+
+  populateResults: function (responseObjects) {
+    this.flights = new AeroBnb.Collections.Flights(responseObjects, { parse: true });
+    this.addFlights();
   },
 
   parseQueryString: function (string) {
