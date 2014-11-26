@@ -16,7 +16,8 @@ AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
   },
 
   events: {
-    'submit #new-flight': 'newFlight'
+    'submit #new-flight': 'newFlight',
+    'click #new-airport-link': 'newAirport'
   },
 
   newFlight: function (event) {
