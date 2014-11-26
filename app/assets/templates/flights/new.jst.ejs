@@ -1,32 +1,48 @@
-<h2>List a flight!</h2>
+<div id="new-form-container">
 
-<form id="new-flight">
+  <h2>List a flight!</h2>
 
-  <label>Aircraft
-    <input type="text" name="flight[aircraft]">
-  </label>
+  <form id="new-flight" role="form">
+    <div class="form-group">  
+      <label>Aircraft
+        <input type="text" name="flight[aircraft]" class="form-control">
+      </label>
+    </div>
 
-  <label>Description
-    <textarea name="flight[description]"></textarea>
-  </label>
+    <div class="form-group">
+      <label>Description
+        <textarea name="flight[description]" class="form-control"></textarea>
+      </label>
+    </div>
 
-  <label>Departure Date
-    <input type="date" name="flight[departure_date]">
-  </label>
+    <div class="form-group">
+      <label>Departure Date
+        <input type="date" name="flight[departure_date]" class="form-control">
+      </label>
+    </div>
 
-  <label>Departure Airport
-    <select name="flight[departure_airport_id]">
-    </select>
-  </label>
+    <div class="form-group">
+      <label>Departure Airport
+        <select name="flight[departure_airport_id]" class="form-control">
+        </select>
+      </label>
+    </div>
 
-  <label>Number of Passengers
-    <input type="number" name="flight[passengers]">
-  </label>
+    <div class="form-group">
+      <label>Number of Passengers
+        <input type="number" name="flight[passengers]" class="form-control">
+      </label>
+    </div>
 
-  <label>Price (USD)
-    <input type="number" name="flight[price]">
-  </label>
+    <div class="form-group">
+      <label>Price (USD)
+        <input type="number" name="flight[price]" class="form-control">
+      </label>
+    </div> 
 
-  <input type="submit" value="Post Flight!">
+    <div class="form-group">
+      <input type="submit" value="Post Flight!" class="btn btn-primary">
+    </div>
+  </form>
 
-</form>
+</div>
