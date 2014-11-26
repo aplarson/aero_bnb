@@ -3,6 +3,8 @@ AeroBnb.Views.FlightsShow = Backbone.View.extend({
 
   initialize: function (options) {
     this.flight = options.flight;
+    this.flight.fetch();
+    this.listenTo(this.flight, 'sync', this.render)
   },
 
   render: function () {

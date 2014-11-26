@@ -1,3 +1,14 @@
 <div id="large-flight-picture">LARGE PICTURE</div>
 
-<div id="listing-details">LISTING DETAILS</div>
+<div id="listing-details">
+  <div id="flight-details">
+    <h2><%= flight.get("aircraft") %>, 
+      <% if (flight.departureAirport) { %> 
+        <%= flight.departureAirport.get('name') %> 
+      <% } %>
+    </h2>
+    <p><%= flight.get('description') %></p>
+  </div>
+  <div id="booking-panel">BOOKING
+  </div>
+</div>

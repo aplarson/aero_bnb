@@ -14,8 +14,7 @@ class Api::FlightsController < Api::ApiController
   end
 
   def show
-    @flight = Flight.find(params[:id])
-    render json: @flight
+    @flight = Flight.includes(:departure_airport).find(params[:id])
   end
 
   private

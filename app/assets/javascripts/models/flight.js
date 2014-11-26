@@ -3,8 +3,7 @@ AeroBnb.Models.Flight = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.departure_airport) {
-      this.departureAirport = new AeroBnb.Models.Airport({ id: response.departure_airport.id });
-      this.departureAirport.fetch();
+      this.departureAirport = new AeroBnb.Models.Airport(response.departure_airport);
       delete response.departure_airport;
     }
 

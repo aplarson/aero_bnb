@@ -1,0 +1,1 @@
+json.extract!(@flight, :id, :owner_id, :departure_date, :aircraft, :description, :departure_airport)
