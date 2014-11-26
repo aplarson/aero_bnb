@@ -1,6 +1,10 @@
 AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   template: JST["flights/search"],
 
+  events: {
+    'blur #filter-form': 'newSearch'
+  },
+
   initialize: function (options) {
     var queryParams = this.parseQueryString(options.queryString);
     this.search(queryParams);
@@ -30,6 +34,18 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
     this.flights.forEach(function (flight) {
       this.addFlight(flight);
     }.bind(this))
+  },
+
+  newSearch: function (event) {
+    debugger
+    var params = $(event.currentTarget).serializeJSON();
+    this.search(params);
+    // var queryEls = [];
+    // _(params).each(function (val, key) {
+    //   queryEls.push(key + '=' + val)
+    // })
+    // var query = queryEls.join('&');
+    // Backbone.history.navigate('flights/search/' + query, { trigger: true });
   },
 
   populateResults: function (responseObjects) {
