@@ -17,10 +17,10 @@
 //= require bootstrap
 //= require aero_bnb
 //= require serializejson.js
+//= require_tree ./util
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
-//= require_tree ./util
 //= require_tree .
