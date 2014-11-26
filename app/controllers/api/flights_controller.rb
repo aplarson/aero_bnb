@@ -1,7 +1,6 @@
 class Api::FlightsController < Api::ApiController
   def index
-    @flights = Flight.all
-    render json: @flights
+    @flights = Flight.includes(:departure_airport).all
   end
 
   def create

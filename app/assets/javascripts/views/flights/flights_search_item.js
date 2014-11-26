@@ -4,6 +4,7 @@ AeroBnb.Views.FlightsSearchItem = Backbone.View.extend({
   initialize: function (options) {
     this.flight = options.flight;
     this.$el.addClass('search-item');
+    this.listenTo(this.flight, 'sync', this.render)
   },
 
   render: function () {

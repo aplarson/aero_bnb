@@ -4,5 +4,8 @@ class Api::AirportsController < Api::ApiController
     render json: @airports
   end
 
-  
+  def show
+    @airport = Airport.find(params[:id])
+    render json: @airport
+  end
 end

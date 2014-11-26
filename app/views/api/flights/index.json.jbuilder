@@ -1,0 +1,1 @@
+json.array!(@flights, :id, :owner_id, :departure_date, :aircraft, :departure_airport)
