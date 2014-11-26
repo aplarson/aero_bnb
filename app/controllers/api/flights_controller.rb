@@ -1,6 +1,6 @@
 class Api::FlightsController < Api::ApiController
   def index
-    @flights = Flight.includes(:departure_airport).all
+    @flights = current_user.owned_flights.includes(:departure_airport)
   end
 
   def create
