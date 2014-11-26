@@ -24,8 +24,8 @@ AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
     var params = $(event.target).serializeJSON();
     var flight = new AeroBnb.Models.Flight(params["flight"]);
     flight.save([], {
-      success: function () {
-        Backbone.history.navigate('flights', { trigger: true });
+      success: function (response) {
+        Backbone.history.navigate('flights/' + response.id, { trigger: true });
       }
     })
   }
