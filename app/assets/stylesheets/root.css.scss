@@ -14,12 +14,15 @@
 
 #search-container {
   width: 60%;
-  background: red;
   height: 500px;
 }
 
 #filters, #listings {
   width: 100%;
+}
+
+#filters {
+  background: red;
 }
 
 nav.navbar {
