@@ -18,7 +18,7 @@ class Api::FlightsController < Api::ApiController
   end
 
   def search
-    @flights = Flight.all
+    @flights = Flight.includes(:departure_airport).all
     if params[:departure_date]
       @flights = @flights.where('departure_date = ?', params[:departure_date])
     end

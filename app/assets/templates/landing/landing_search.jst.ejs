@@ -1,5 +1,15 @@
-<form id="landing-search-form">
-  <input type="text" name="departure_location" value="Where do you want to take off?">
-  <input type="text" name="departure_date" value="When do you want to fly?">
-  <input type="submit" value="Fly!">
+<form id="landing-search-form" class="form-inline">
+  <div class="form-group">
+    <label>From?
+      <input type="text" name="departure_location" class="form-control">
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>When do you want to fly?
+      <input type="date" name="departure_date">
+    </label>
+  </div>
+
+  <input type="submit" value="Fly!" class="btn btn-primary">
 </form>
