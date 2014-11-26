@@ -39,12 +39,12 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   newSearch: function (event) {
     var params = $(event.currentTarget).serializeJSON();
     this.search(params);
-    // var queryEls = [];
-    // _(params).each(function (val, key) {
-    //   queryEls.push(key + '=' + val)
-    // })
-    // var query = queryEls.join('&');
-    // Backbone.history.navigate('flights/search/' + query, { trigger: true });
+    var queryEls = [];
+    _(params).each(function (val, key) {
+      queryEls.push(key + '=' + val)
+    })
+    var query = queryEls.join('&');
+    Backbone.history.navigate('flights/search/' + query, { replace: true });
   },
 
   populateResults: function (responseObjects) {
