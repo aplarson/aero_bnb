@@ -20,16 +20,16 @@ class Api::FlightsController < Api::ApiController
   def search
     @flights = Flight.includes(:departure_airport).all
     if params[:departure_date]
-      @flights = @flights.includes(:departure_airport).where('departure_date = ?', params[:departure_date])
+      @flights = @flights.where('departure_date = ?', params[:departure_date])
     end
     if params[:min_price]
-      @flights = @flights.includes(:departure_airport).where('price >= ?', params[:min_price])
+      @flights = @flights.where('price >= ?', params[:min_price])
     end
     if params[:max_price]
-      @flights = @flights.includes(:departure_airport).where('price <= ?', params[:max_price])
+      @flights = @flights.where('price <= ?', params[:max_price])
     end
     if params[:passengers]
-      @flights = @flights.includes(:departure_airport).where('passengers >= ?', params[:passengers])
+      @flights = @flights.where('passengers >= ?', params[:passengers])
     end
     render :index
   end
