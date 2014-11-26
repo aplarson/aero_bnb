@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   namespace :api, defaults: { format: :json } do
-    resources :flights, only: [:index, :create, :show]
+    resources :flights, only: [:index, :create, :show] do
+      collection do
+        get 'search'
+      end
+    end
     resources :airports
   end
 end

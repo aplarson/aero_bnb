@@ -18,6 +18,14 @@ class Api::FlightsController < Api::ApiController
   end
 
   def search
+    @flights = Flight.all
+    if params[:departure_date]
+      @flights = @flights.where('departure_date = ?', params[:departure_date])
+    end
+    if params[:min_price]
+      @flights = @flights.where('price > ?', params[:min_price])
+    end
+    render json: @flights
   end
 
   private
