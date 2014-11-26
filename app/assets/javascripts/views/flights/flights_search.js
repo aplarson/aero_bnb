@@ -6,14 +6,14 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    var queryParams = this.parseQueryString(options.queryString);
-    this.search(queryParams);
+    this.queryParams = this.parseQueryString(options.queryString);
+    this.search(this.queryParams);
   },
 
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    var filterView = new AeroBnb.Views.FlightsFilter();
+    var filterView = new AeroBnb.Views.FlightsFilter({ queryParams: this.queryParams });
     this.addSubview('#filters', filterView)
     return this;
   },
