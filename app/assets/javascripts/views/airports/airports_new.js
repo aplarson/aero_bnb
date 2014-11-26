@@ -5,5 +5,14 @@ AeroBnb.Views.AirportsNew = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     return this;
+  },
+
+  events: {
+    'submit #new-airport-form': 'createAirport'
+  },
+
+  createAirport: function (event) {
+    event.preventDefault();
+    var params = $(event.target).serializeJSON();
   }
 });
