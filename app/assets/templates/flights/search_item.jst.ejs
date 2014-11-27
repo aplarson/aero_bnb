@@ -2,6 +2,6 @@
 
   <div class="small-flight-picture"><img src="http://placekitten.com/g/300/200"></div>
 
-  <p><%= flight.get("aircraft") %>, <%= flight.departureAirport.get('name') %></p>
+  <p><%= flight.escape("aircraft") %>, <%= flight.departureAirport.escape('name') %></p>
 
 </div>

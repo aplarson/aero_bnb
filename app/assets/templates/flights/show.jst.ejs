@@ -2,12 +2,12 @@
 
 <div id="listing-details">
   <div id="flight-details">
-    <h2><%= flight.get("aircraft") %>, 
+    <h2><%= flight.escape("aircraft") %>, 
       <% if (flight.departureAirport) { %> 
-        <%= flight.departureAirport.get('name') %> 
+        <%= flight.departureAirport.escape('name') %> 
       <% } %>
     </h2>
-    <p><%= flight.get('description') %></p>
+    <p><%= flight.escape('description') %></p>
   </div>
   <div id="booking-panel">BOOKING
   </div>

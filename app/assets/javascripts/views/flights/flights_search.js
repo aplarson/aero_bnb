@@ -18,13 +18,6 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
     return this;
   },
 
-  remove: function () {
-    Backbone.View.prototype.remove.call(this);
-    _(this._flights).each(function (flightView) {
-      flightView.remove();
-    })
-  },
-
   addFlight: function (flight) {
     var view = new AeroBnb.Views.FlightsSearchItem({ flight: flight });
     this.addSubview('#listings', view);
