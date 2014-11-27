@@ -13,6 +13,12 @@ class Api::FlightsController < Api::ApiController
     end
   end
 
+  def destroy
+    @flight = Flight.find(params[:id])
+    @flight.destroy
+    render json: @flight
+  end
+
   def show
     @flight = Flight.includes(:departure_airport).find(params[:id])
   end
