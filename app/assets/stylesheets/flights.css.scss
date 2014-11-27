@@ -28,3 +28,26 @@
   margin: auto;
   text-align: center;
 }
+
+.index-title {
+  margin: auto;
+  text-align: center;
+}
+
+.index-item {
+  margin: auto;
+  text-align: center;
+}
+
+.index-container {
+  border: 1px solid grey;
+  width: 60%;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.index-container:hover {
+  background: lightgrey;
+}
