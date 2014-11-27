@@ -4,7 +4,7 @@
 #
 #  id                   :integer          not null, primary key
 #  owner_id             :integer          not null
-#  departure_date       :datetime         not null
+#  departure_date       :date             not null
 #  departure_airport_id :integer          not null
 #  created_at           :datetime
 #  updated_at           :datetime
@@ -28,4 +28,6 @@ class Flight < ActiveRecord::Base
     :departure_airport,
     class_name: "Airport"
   )
+
+  has_many :reservations
 end

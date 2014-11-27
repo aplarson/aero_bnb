@@ -5,15 +5,16 @@
 
 #listing-details {
   width: 80%;
-  background: green;
   min-height: 300px;
   margin: auto;
+  padding: 5px;
 }
 
 #flight-details {
   width: 70%;
   float: left;
-  background: orange;
+  border: 1px solid grey;
+  padding: 5px;
 }
 
 #booking-panel {

@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
     foreign_key: :owner_id,
     primary_key: :id
   )
+
+  has_many :reserved_flights, class_name: "Flight"
   
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
