@@ -21,7 +21,7 @@ AeroBnb.Views.ReservationsBooking = Backbone.View.extend({
     var reservation = new AeroBnb.Models.Reservation(params["reservation"]);
     reservation.save([], {
       success: function () {
-        alert("Reservation created!")
+        Backbone.history.navigate('reservations', { trigger: true })
       }
     });
   }

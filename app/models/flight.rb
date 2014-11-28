@@ -30,4 +30,6 @@ class Flight < ActiveRecord::Base
   )
 
   has_many :reservations
+
+  has_many :booked_passengers, through: :reservations, source: :user
 end

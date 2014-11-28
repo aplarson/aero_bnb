@@ -8,7 +8,8 @@ AeroBnb.Routers.Router = Backbone.Router.extend({
     'flights/search/:params': 'searchFlights',
     'flights/new': 'newFlight',
     'flights/:id': 'showFlight',
-    'flights': 'flightIndex'
+    'flights': 'flightIndex',
+    'reservations': 'reservationsIndex'
   },
 
   swapView: function (view) {
@@ -31,6 +32,13 @@ AeroBnb.Routers.Router = Backbone.Router.extend({
 
   newFlight: function () {
     var view = new AeroBnb.Views.FlightsNew()
+    this.swapView(view);
+  },
+
+  reservationsIndex: function () {
+    var reservations = new AeroBnb.Collections.Reservations();
+    reservations.fetch();
+    var view = new AeroBnb.Views.ReservationsIndex({ reservations: reservations });
     this.swapView(view);
   },
 

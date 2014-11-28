@@ -27,7 +27,9 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_many :reserved_flights, class_name: "Flight"
+  has_many :reservations
+
+  has_many :reserved_flights, through: :reservations, source: :flight
   
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
