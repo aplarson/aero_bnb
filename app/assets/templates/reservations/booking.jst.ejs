@@ -1,1 +1,15 @@
 <h3>Book this flight</h3>
+
+<form id="flight-booking-form" role="form">
+  <div class="form-group">
+    <label>How many passengers?
+      <input type="number" class="form-control" name="reservation[passengers]">
+    </label>
+  </div>
+
+    <input type="hidden" name="reservation[flight_id]" value="<%= flight.id %>">
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Make reservation!">
+  </div>
+</form>
