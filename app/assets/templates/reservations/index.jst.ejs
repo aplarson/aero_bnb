@@ -1,14 +1,6 @@
-<h1>Manage your reservations</h1>
+<h1 class="index-title">Manage your reservations</h1>
 
 
-<ul id="reservation-index">
-  <% reservations.each(function (reservation) { %>
-    <li class="reservation-index-item">
-      <% if (reservation.flight) { %>
-        <p>
-          <%= reservation.flight.escape('aircraft') %> departing <%= reservation.flight.escape('departure_date') %>
-        </p> 
-      <% } %>
-    </li>
-  <% }) %>
+<ul id="reservation-index" class="index-list">
+
 </ul>

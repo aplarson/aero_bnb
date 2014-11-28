@@ -1,0 +1,1 @@
+json.array!(@reservations, :id, :user_id, :passengers, :flight)

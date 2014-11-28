@@ -22,7 +22,6 @@ class Api::ReservationsController < Api::ApiController
 
   def index
     @reservations = current_user.reservations.includes(:flight)
-    render json: @reservations
   end
 
   private
