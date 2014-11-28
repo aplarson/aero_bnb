@@ -1,4 +1,4 @@
-AeroBnb.Views.FlightsShow = Backbone.View.extend({
+AeroBnb.Views.FlightsShow = Backbone.CompositeView.extend({
   template: JST["flights/show"],
 
   initialize: function (options) {
@@ -10,6 +10,8 @@ AeroBnb.Views.FlightsShow = Backbone.View.extend({
   render: function () {
     var content = this.template({ flight: this.flight });
     this.$el.html(content);
+    var bookingView = new AeroBnb.Views.ReservationsBooking({ flight: this.flight });
+    this.addSubview("#booking-panel", bookingView)
     return this;
   }
 })

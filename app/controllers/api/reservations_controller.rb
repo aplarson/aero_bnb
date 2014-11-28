@@ -1,6 +1,7 @@
 class Api::ReservationsController < Api::ApiController
   def create
     @reservation = Reservation.new(reservation_params)
+    @reservation.user_id = current_user.id
     if @reservation.save
       render json: @reservation
     else
@@ -27,6 +28,6 @@ class Api::ReservationsController < Api::ApiController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:user_id, :flight_id, :passengers)
+    params.require(:reservation).permit(:flight_id, :passengers)
   end
 end
