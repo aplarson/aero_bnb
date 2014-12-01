@@ -1,4 +1,6 @@
-<h3>Book this flight</h3>
+<h3>Book this flight for $<%= flight.escape('price') %></h3>
+
+<p>Departing <%= flight.escape('departure_date') %></p>
 
 <form id="flight-booking-form" role="form">
   <div class="form-group">

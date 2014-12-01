@@ -8,8 +8,6 @@
       <% } %>
     </h2>
     <p><%= flight.escape('description') %></p>
-    <h3>Date: <%= flight.escape('departure_date') %></h3>
-    <h3>Price: $<%= flight.escape('price') %></h3>
 
     <% if (flight.owner) { %>
       <div id="owner-details">
