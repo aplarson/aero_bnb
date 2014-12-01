@@ -25,6 +25,8 @@ AeroBnb.Views.FlightsIndexItem = Backbone.View.extend({
   },
 
   showFlight: function (event) {
-    Backbone.history.navigate('flights/' + this.flight.id, { trigger: true })
+    if (!($(event.target).hasClass('btn'))) {
+      Backbone.history.navigate('flights/' + this.flight.id, { trigger: true })
+    }
   }
 })

@@ -11,7 +11,7 @@
 #
 
 class Airport < ActiveRecord::Base
-  validates :icao_code, presence: true
+  validates :icao_code, :latitude, :longitude, presence: true
   validates :icao_code, uniqueness: true
 
   has_many(

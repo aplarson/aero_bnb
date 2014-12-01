@@ -21,6 +21,6 @@ class Api::AirportsController < Api::ApiController
   private
 
   def airport_params
-    params.require(:airport).permit(:name, :iata_code, :icao_code)
+    params.require(:airport).permit(:name, :iata_code, :icao_code, :latitude, :longitude)
   end
 end
