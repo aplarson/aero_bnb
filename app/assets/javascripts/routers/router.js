@@ -1,6 +1,7 @@
 AeroBnb.Routers.Router = Backbone.Router.extend({
   initialize: function ($rootEl) {
     this.$rootEl = $rootEl;
+    this.currentUser  =new AeroBnb.Models.User({ id: window.currentUser });
     this.airports = new AeroBnb.Collections.Airports();
     this.airports.fetch();
   },
@@ -32,7 +33,8 @@ AeroBnb.Routers.Router = Backbone.Router.extend({
   },
 
   editUser: function () {
-    var view = new AeroBnb.Views.UsersEdit();
+    this.currentUser.fetch();
+    var view = new AeroBnb.Views.UsersEdit({ user: this.currentUser });
     this.swapView(view);
   },
 

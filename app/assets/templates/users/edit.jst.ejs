@@ -1,1 +1,32 @@
 <h1>Update your profile!</h1>
+
+<form role="form" id="edit-user-form">
+  <div class="form-group">
+      <label>Username
+        <input type="text" name="user[username]" value="<%= user.get("username") %>" class="form-control">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Email Address
+        <input type="text" name="user[email]" value="<%= user.get("email") %>" class="form-control">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Description
+        <textarea name="user[description]" class="form-control"><%= user.get('description') %></textarea>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Photo URL
+        <input type="text" name="user[photo_url]" class="form-control" value="<%= user.get("form_url") %>">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <input type="submit" value="Update Profile!" class='btn btn-primary'>
+    </div>
+  </form>
+</form>
