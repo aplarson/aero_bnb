@@ -8,6 +8,8 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  name       :string(255)      not null
+#  latitude   :float            default(0.0), not null
+#  longitude  :float            default(0.0), not null
 #
 
 require 'test_helper'

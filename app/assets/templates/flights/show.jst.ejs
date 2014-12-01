@@ -10,6 +10,14 @@
     <p><%= flight.escape('description') %></p>
     <h3>Date: <%= flight.escape('departure_date') %></h3>
     <h3>Price: $<%= flight.escape('price') %></h3>
+
+    <% if (flight.owner) { %>
+      <div id="owner-details">
+        <img src="<%= flight.owner.get('photo_url') %>" class="profile-thumbnail">
+        <h3 class="flight-owner">Pilot: <%= flight.owner.escape('username') %></h3>
+        <p><%= flight.owner.escape('description') %></p>
+      </div>
+    <% } %>
   </div>
   <div id="booking-panel">
   </div>

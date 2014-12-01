@@ -9,6 +9,8 @@
 #  email           :string(255)      not null
 #  created_at      :datetime
 #  updated_at      :datetime
+#  description     :text
+#  photo_url       :string(255)
 #
 
 require 'test_helper'
