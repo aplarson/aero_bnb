@@ -1,8 +1,8 @@
 <div class="index-container container-fluid">
-
-  <h2><%= reservation.flight.escape('aircraft') %></h2>
-  <p>
-    Departing from <%= reservation.flight.escape('airport') %> on <%= reservation.flight.escape('date') %>.
-  </p>
-
+  <% if (reservation.flight) { %>
+    <h2><%= reservation.flight.escape('aircraft') %></h2>
+    <p>
+      Departing from <%= reservation.flight.escape('airport') %> on <%= reservation.flight.escape('date') %>.
+    </p>
+  <% } %>
 </div>
