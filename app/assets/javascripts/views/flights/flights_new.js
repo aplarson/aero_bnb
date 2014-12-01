@@ -1,5 +1,5 @@
 AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
-  template: JST["flights/new"],
+  template: JST["flights/form"],
 
   initialize: function () {
     this.airports = new AeroBnb.Collections.Airports();
@@ -10,14 +10,14 @@ AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template();
+    var content = this.template({ flight: new AeroBnb.Models.Flight() });
     this.$el.html(content);
     this.attachSubviews();
     return this;
   },
 
   events: {
-    'submit #new-flight': 'newFlight',
+    'submit .flight-form': 'newFlight',
     'click #new-airport-link': 'newAirport'
   },
 

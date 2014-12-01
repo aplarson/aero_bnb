@@ -1,0 +1,57 @@
+<div id="form-container">
+  <form role="form" class="flight-form">
+    <div class="form-group">  
+      <label>Aircraft
+        <input type="text" 
+               name="flight[aircraft]" 
+               class="form-control" 
+               value="<%= flight.escape('aircraft') %>">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Description
+        <textarea name="flight[description]" 
+                  class="form-control"><%= flight.escape('description') %></textarea>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Departure Date
+        <input type="date" 
+               name="flight[departure_date]" 
+               class="form-control"
+               value="<%= flight.escape('departure_date') %>">
+      </label>
+    </div>
+
+    <div class="form-group" id="airport-select">
+
+    </div>
+    <div id="airport-creation">
+      <p>Don't see your airport? <a href="javascript:void(0)" id="new-airport-link">Add it!</a></p>
+    </div>
+
+    <div class="form-group">
+      <label>Number of Passengers
+        <input type="number" 
+               name="flight[passengers]" 
+               class="form-control" 
+               value="<%= flight.escape('passengers') %>">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Price (USD)
+        <input type="number" 
+               name="flight[price]" 
+               class="form-control"
+               value="<%= flight.escape('price') %>">
+      </label>
+    </div> 
+
+    <div class="form-group">
+      <input type="submit" value="Post Flight!" class="btn btn-primary">
+    </div>
+  </form>
+</div>
