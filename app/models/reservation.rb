@@ -15,4 +15,5 @@ class Reservation < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :flight
+  has_one :departure_airport, through: :flight, source: :departure_airport
 end
