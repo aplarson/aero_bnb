@@ -7,9 +7,17 @@ AeroBnb.Views.ReservationsIndexItem = Backbone.View.extend({
     this.listenTo(this.reservation, 'sync', this.render);
   },
 
+  events: {
+    'click .index-container': 'showFlight'
+  },
+
   render: function () {
     var content = this.template({ reservation: this.reservation });
     this.$el.html(content);
     return this;
+  },
+
+  showFlight: function (event) {
+    Backbone.history.navigate('flights/' + this.reservation.flight.id, { trigger: true })
   }
 });
