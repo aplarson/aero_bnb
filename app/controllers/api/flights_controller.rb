@@ -43,6 +43,17 @@ class Api::FlightsController < Api::ApiController
     render :index
   end
 
+  def update
+    @flight = Flight.find(params[:id])
+    if @flight.owner != current_user
+      render json: "Unauthorized access", status: 403
+    elsif @flight.update(flight_params)
+      render json: @flight
+    else
+      render json: @flight.errors, status: 422
+    end
+  end
+
   private
 
   def flight_params
