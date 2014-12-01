@@ -81,12 +81,14 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
 
   search: function (queryParams) {
     var view = this;
+    this.queryParams = queryParams;
     $.ajax({
       data: queryParams,
       dataType: 'json',
       url: '/api/flights/search',
       success: function (response) {
         view.populateResults(response);
+        view.centerMap();
       }
     })
   }
