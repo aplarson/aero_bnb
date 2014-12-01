@@ -37,6 +37,9 @@ class Api::FlightsController < Api::ApiController
     if params[:passengers] && params[:passengers] != ''
       @flights = @flights.where('passengers >= ?', params[:passengers])
     end
+    if params[:airport] && params[:airport] != ''
+      @flights = @flights.where('departure_airport_id = ?', params[:airport])
+    end
     render :index
   end
 
