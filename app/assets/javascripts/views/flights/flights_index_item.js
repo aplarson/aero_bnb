@@ -3,7 +3,8 @@ AeroBnb.Views.FlightsIndexItem = Backbone.View.extend({
 
   events: {
     'click .index-container': 'showFlight',
-    'click .btn-danger': 'deleteFlight'
+    'click .btn-danger': 'deleteFlight',
+    'click .btn-success': 'editFlight'
   },
 
   initialize: function (options) {
@@ -22,6 +23,10 @@ AeroBnb.Views.FlightsIndexItem = Backbone.View.extend({
         this.remove();
       }.bind(this)
     });
+  },
+
+  editFlight: function (event) {
+    Backbone.history.navigate('flights/' + this.flight.id + '/edit', { trigger: true })
   },
 
   showFlight: function (event) {
