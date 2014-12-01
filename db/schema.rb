@@ -11,17 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127010334) do
+ActiveRecord::Schema.define(version: 20141201171222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "airports", force: true do |t|
-    t.string   "icao_code",  null: false
+    t.string   "icao_code",                null: false
     t.string   "iata_code"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",       null: false
+    t.string   "name",                     null: false
+    t.float    "latitude",   default: 0.0, null: false
+    t.float    "longitude",  default: 0.0, null: false
   end
 
   create_table "flights", force: true do |t|
