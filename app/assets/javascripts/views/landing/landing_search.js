@@ -1,9 +1,8 @@
 AeroBnb.Views.LandingSearch = Backbone.CompositeView.extend({
   template: JST["landing/landing_search"],
 
-  initialize: function () {
-    this.airports = new AeroBnb.Collections.Airports();
-    this.airports.fetch();
+  initialize: function (options) {
+    this.airports = options.airports;
     var airportSelect = new AeroBnb.Views.AirportSelect({ airports: this.airports, name: "airport" });
     this.addSubview('#airport-select', airportSelect);
   },
