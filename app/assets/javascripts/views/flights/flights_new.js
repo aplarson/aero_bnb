@@ -4,7 +4,7 @@ AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
   initialize: function () {
     this.airports = new AeroBnb.Collections.Airports();
     this.airports.fetch();
-    var airportSelect = new AeroBnb.Views.AirportSelect({ airports: this.airports });
+    var airportSelect = new AeroBnb.Views.AirportSelect({ airports: this.airports, name: "flight[departure_airport_id]" });
     this.addSubview('#airport-select', airportSelect);
     this.listenTo(this.airports, 'add', this.render);
   },

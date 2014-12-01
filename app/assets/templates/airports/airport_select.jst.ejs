@@ -1,5 +1,5 @@
 <label>Departure Airport
-  <select name="flight[departure_airport_id]" class="form-control">
+  <select name="<%= name %>" class="form-control">
     <% airports.forEach(function (airport) { %>
       <option value="<%= airport.id %>"><%= airport.escape('name') %></option>
     <% }); %>

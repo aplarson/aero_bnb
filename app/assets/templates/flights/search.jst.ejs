@@ -8,4 +8,12 @@
 
 <script type="text/javascript">
 
+  var latitude = 37.6188;
+  var longitude = -122.3754;
+
+  var mapOptions = {
+    center: { lat: latitude, lng: longitude },
+    zoom: 8
+  };
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 </script>

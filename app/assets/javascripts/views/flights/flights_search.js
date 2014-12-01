@@ -15,7 +15,7 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
     this.$el.html(content);
     var filterView = new AeroBnb.Views.FlightsFilter({ queryParams: this.queryParams });
     this.addSubview('#filters', filterView);
-    this.addMap();
+    this.centerMap();
     return this;
   },
 
@@ -30,25 +30,18 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
     }.bind(this))
   },
 
-  addMap: function () {
-    debugger
-    if (this.queryParams.airport) {
-      var airport = this.queryParams.airport;
-      var latitude = airport.get('latitude');
-      var longitude = airport.get('longitude');
-    } else {
-      var latitude = 37.6188;
-      var longitude = -122.3754;
+  centerMap: function () {
+    var airport = this.queryParams.airport
+    if (airport) {
+      airport = new AeroBnb.Models.Airport({ id: airport });
+      airport.fetch({
+        success: function () {
+          var latitude = airport.get('latitude');
+          var longitude = airport.get('longitude');
+          window.map.setCenter({ lat: latitude, lng: longitude });
+        }
+      })
     }
-    // function initializeMap() {
-
-      var mapOptions = {
-        center: { lat: latitude, lng: longitude },
-        zoom: 8
-      };
-      var map = new google.maps.Map(this.$('map-canvas'), mapOptions);
-    // }
-    // google.maps.event.addDomListener(window, 'load', initializeMap);
   },
 
   newSearch: function (event) {
