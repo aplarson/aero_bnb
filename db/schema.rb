@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202014619) do
+ActiveRecord::Schema.define(version: 20141202015706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,16 +27,16 @@ ActiveRecord::Schema.define(version: 20141202014619) do
   end
 
   create_table "flights", force: true do |t|
-    t.integer  "owner_id",                                                                                 null: false
-    t.date     "departure_date",                                                                           null: false
-    t.integer  "departure_airport_id",                                                                     null: false
+    t.integer  "owner_id",                                                   null: false
+    t.date     "departure_date",                                             null: false
+    t.integer  "departure_airport_id",                                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "aircraft",                                                                                 null: false
+    t.string   "aircraft",                                                   null: false
     t.text     "description"
-    t.integer  "passengers",                                                                               null: false
-    t.integer  "price",                                                                                    null: false
-    t.string   "photo_url",            default: "https://www.filepicker.io/api/file/ua8Dx3FWTcq20wWJpndS", null: false
+    t.integer  "passengers",                                                 null: false
+    t.integer  "price",                                                      null: false
+    t.string   "photo_url",            default: "/assets/default_plane.jpg", null: false
   end
 
   add_index "flights", ["departure_airport_id"], name: "index_flights_on_departure_airport_id", using: :btree
