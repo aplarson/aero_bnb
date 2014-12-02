@@ -12,7 +12,7 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template();
+    var content = this.template({ view: this });
     this.$el.html(content);
     var filterView = new AeroBnb.Views.FlightsFilter({ queryParams: this.queryParams,
           airports: this.airports });
@@ -38,14 +38,11 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
       airport = new AeroBnb.Models.Airport({ id: airport });
       airport.fetch({
         success: function () {
+          this.map = window.map;
           var airportLoc = this.locateAirport(airport);
-          window.map.setCenter(airportLoc);
-          var marker = new google.maps.Marker({
-            position: airportLoc,
-            map: window.map,
-            title: airport.escape('name')
-          });
+          this.map.setCenter(airportLoc);
           this.markAirports();
+          google.maps.event.addListener(this.map, 'bounds_changed', this.markAirports.bind(this));
         }.bind(this)
       })
     }
@@ -63,7 +60,7 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   },
 
   markAirports: function () {
-    var bounds = window.map.getBounds();
+    var bounds = this.map.getBounds();
     if (bounds) {
       var coords = bounds.toUrlValue().split(',');
       var namedCoords = {
@@ -79,14 +76,7 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
         url: '/api/airports/search',
         success: function (response) {
           view.airports = new AeroBnb.Collections.Airports(response);
-          view.airports.each(function (airport) {
-            var airportLoc = view.locateAirport(airport);
-            var marker = new google.maps.Marker({
-              position: airportLoc,
-              map: window.map,
-              title: airport.escape('name')
-            });
-          })
+          view.placeMarks();
         }
       })
     }
@@ -101,6 +91,17 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
     })
     var query = queryEls.join('&');
     Backbone.history.navigate('flights/search/' + query, { replace: true });
+  },
+
+  placeMarks: function () {
+    this.airports.each(function (airport) {
+      var airportLoc = this.locateAirport(airport);
+      var marker = new google.maps.Marker({
+        position: airportLoc,
+        map: this.map,
+        title: airport.escape('name')
+      });
+    }.bind(this))
   },
 
   populateResults: function (responseObjects) {
