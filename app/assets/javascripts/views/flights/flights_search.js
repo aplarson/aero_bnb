@@ -2,7 +2,7 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   template: JST["flights/search"],
 
   events: {
-    'blur #filter-form': 'newSearch'
+    'change #filter-form': 'newSearch'
   },
 
   initialize: function (options) {
