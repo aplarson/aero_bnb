@@ -1,5 +1,6 @@
 #large-flight-picture {
-  background: red;
+  max-height: 500px;
+  overflow: hidden;
 }
 
 #large-flight-picture img {
@@ -64,4 +65,8 @@
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
+
+.flight-show-image {
+
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202012950) do
+ActiveRecord::Schema.define(version: 20141202014619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20141202012950) do
     t.text     "description"
     t.integer  "passengers",                                                                               null: false
     t.integer  "price",                                                                                    null: false
-    t.string   "photo_url",            default: "https://www.filepicker.io/api/file/sLhClWCyROeQ83TcoaC5", null: false
+    t.string   "photo_url",            default: "https://www.filepicker.io/api/file/ua8Dx3FWTcq20wWJpndS", null: false
   end
 
   add_index "flights", ["departure_airport_id"], name: "index_flights_on_departure_airport_id", using: :btree
