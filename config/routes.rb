@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :airports do
       collection do
         get 'search'
+        get 'names'
+        get 'name_search'
       end
     end
   end

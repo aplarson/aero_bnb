@@ -17,6 +17,7 @@ gem 'backbone-on-rails'
 
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 gem 'turbolinks'
 

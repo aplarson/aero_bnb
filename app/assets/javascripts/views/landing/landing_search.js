@@ -3,8 +3,8 @@ AeroBnb.Views.LandingSearch = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.airports = options.airports;
-    var airportSelect = new AeroBnb.Views.AirportSelect({ airports: this.airports, name: "airport" });
-    this.addSubview('#airport-select', airportSelect);
+    // var airportSelect = new AeroBnb.Views.AirportSelect({ airports: this.airports, name: "airport" });
+    // this.addSubview('#airport-select', airportSelect);
   },
 
   render: function () {
@@ -12,11 +12,16 @@ AeroBnb.Views.LandingSearch = Backbone.CompositeView.extend({
     this.$el.html(content);
 
     this.attachSubviews();
+    this.$('#airport-name').autocomplete({ 
+        source: '/api/airports/names',
+        select: this.selectAirport.bind(this)
+      });
     return this;
   },
 
   events: {
-    'submit #landing-search-form': 'showResults'
+    'submit #landing-search-form': 'showResults',
+    'keyup #airport-select': 'getAirportOptions'
   },
 
   showResults: function (event) {
@@ -24,9 +29,24 @@ AeroBnb.Views.LandingSearch = Backbone.CompositeView.extend({
     var params = $(event.target).serializeJSON();
     var queryEls = [];
     _(params).each(function (val, key) {
-      queryEls.push(key + '=' + val)
+      if (key != 'airport_name') {
+        queryEls.push(key + '=' + val)
+      }
     })
     var query = queryEls.join('&');
     Backbone.history.navigate('flights/search/' + query, { trigger: true })
+  },
+
+  selectAirport: function (event, ui) {
+    var name = ui.item.value;
+    var view = this;
+    $.ajax({
+      url: '/api/airports/name_search',
+      dataType: 'json',
+      data: { 'airport': { 'name': name } },
+      success: function (response) {
+        view.$('#airport-id').val(response);
+      }
+    })
   }
 });

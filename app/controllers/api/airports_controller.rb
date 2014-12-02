@@ -26,6 +26,17 @@ class Api::AirportsController < Api::ApiController
     render json: @airport
   end
 
+  def names
+    @airports = Airport.where("name LIKE ?", "%#{params[:term]}%")
+    names = @airports.map { |airport| airport.name }
+    render json: names
+  end
+
+  def name_search
+    @airports = Airport.where("name = ?", params[:airport][:name])
+    render json: @airports.first.id
+  end
+
   private
 
   def airport_params
