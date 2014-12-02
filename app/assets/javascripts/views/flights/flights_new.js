@@ -1,18 +1,14 @@
-AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
+AeroBnb.Views.FlightsNew = Backbone.View.extend({
   template: JST["flights/form"],
-
-  initialize: function () {
-    this.airports = new AeroBnb.Collections.Airports();
-    this.airports.fetch();
-    var airportSelect = new AeroBnb.Views.AirportSelect({ airports: this.airports, name: "flight[departure_airport_id]" });
-    this.addSubview('#airport-select', airportSelect);
-    this.listenTo(this.airports, 'add', this.render);
-  },
 
   render: function () {
     var content = this.template({ flight: new AeroBnb.Models.Flight() });
     this.$el.html(content);
-    this.attachSubviews();
+
+    this.$('#airport-name').autocomplete({ 
+      source: '/api/airports/names',
+      select: this.selectAirport.bind(this)
+    });
     return this;
   },
 
@@ -34,6 +30,19 @@ AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
     flight.save([], {
       success: function (response) {
         Backbone.history.navigate('flights/' + response.id, { trigger: true });
+      }
+    })
+  },
+
+  selectAirport: function (event, ui) {
+    var name = ui.item.value;
+    var view = this;
+    $.ajax({
+      url: '/api/airports/name_search',
+      dataType: 'json',
+      data: { 'airport': { 'name': name } },
+      success: function (response) {
+        view.$('#airport-id').val(response);
       }
     })
   },

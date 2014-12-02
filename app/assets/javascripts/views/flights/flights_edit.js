@@ -14,8 +14,27 @@ AeroBnb.Views.FlightsEdit = Backbone.View.extend({
   render: function () {
     var content = this.template({ flight: this.flight });
     this.$el.html(content);
+
+    this.$('#airport-name').autocomplete({ 
+      source: '/api/airports/names',
+      select: this.selectAirport.bind(this)
+    });
     return this;
   },
+
+  selectAirport: function (event, ui) {
+    var name = ui.item.value;
+    var view = this;
+    $.ajax({
+      url: '/api/airports/name_search',
+      dataType: 'json',
+      data: { 'airport': { 'name': name } },
+      success: function (response) {
+        view.$('#airport-id').val(response);
+      }
+    })
+  },
+
 
   updateFlight: function (event) {
     event.preventDefault();

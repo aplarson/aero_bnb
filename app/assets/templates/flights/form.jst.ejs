@@ -33,9 +33,16 @@
       </label>
     </div>
 
-    <div class="form-group" id="airport-select">
-
+    <div class="form-group">
+      <label id="airport-select">Where are you coming from?
+        <input type="text" name="airport_name" id="airport-name">
+      </label>
+      <input type="hidden" 
+             name="flight[departure_airport_id]" 
+             id="airport-id" 
+             value="<%= flight.escape('departure_airport_id') %>">
     </div>
+
     <div id="airport-creation">
       <p>Don't see your airport? <a href="javascript:void(0)" id="new-airport-link">Add it!</a></p>
     </div>
