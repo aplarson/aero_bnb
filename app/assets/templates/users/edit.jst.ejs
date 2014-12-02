@@ -20,13 +20,13 @@
     </div>
 
     <div class="form-group">
-      <label>Photo URL
-        <input type="text" name="user[photo_url]" class="form-control" value="<%= user.get("form_url") %>">
-      </label>
+      <button class="btn btn-primary" id="filepicker">Upload an image</button>
     </div>
 
+    <span id="image-url"><%= user.get('photo_url') %></span>
+
     <div class="form-group">
-      <input type="submit" value="Update Profile!" class='btn btn-primary'>
+      <input type="submit" value="Update Profile!" class='btn btn-primary' id="edit-user-button">
     </div>
   </form>
 </form>

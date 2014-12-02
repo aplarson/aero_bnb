@@ -1,0 +1,1 @@
+json.extract!(@user, :username, :email, :description, :photo_url)

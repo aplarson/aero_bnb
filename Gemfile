@@ -30,6 +30,7 @@ gem 'spring',        group: :development
 gem 'newrelic_rpm'
 gem 'bcrypt', '~> 3.1.7'
 gem 'filepicker-rails'
+gem 'figaro'
 
 group :development do
   gem 'better_errors'
