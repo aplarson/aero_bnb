@@ -19,9 +19,9 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({ view: this });
     this.$el.html(content);
-    var filterView = new AeroBnb.Views.FlightsFilter({ queryParams: this.queryParams,
+    this.filterView = new AeroBnb.Views.FlightsFilter({ queryParams: this.queryParams,
           airports: this.airports });
-    this.addSubview('#filters', filterView);
+    this.addSubview('#filters', this.filterView);
     this.centerMap();
     return this;
   },
@@ -86,6 +86,7 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
         url: '/api/airports/search',
         success: function (response) {
           view.airports = new AeroBnb.Collections.Airports(response);
+          view.updateFilter();
           view.placeMarks();
         }
       })
@@ -150,5 +151,15 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
         view.centerMap();
       }
     })
+  },
+
+  updateFilter: function () {
+    this.removeSubview('#filters', this.filterView);
+    this.filterView = new AeroBnb.Views.FlightsFilter({ 
+          queryParams: this.queryParams,
+          airports: this.airports,
+          selected: this.queryParams["airport"]
+        });
+    this.addSubview('#filters', this.filterView);
   }
 })

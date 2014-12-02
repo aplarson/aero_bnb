@@ -4,7 +4,8 @@ AeroBnb.Views.FlightsFilter = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.queryParams = options.queryParams;
     var airportFilter = new AeroBnb.Views.AirportsFilter({ 
-                                      airports: options.airports
+                                      airports: options.airports,
+                                      selected: this.queryParams["airport"]
                                     });
     this.addSubview('#airport-select', airportFilter);
   },
