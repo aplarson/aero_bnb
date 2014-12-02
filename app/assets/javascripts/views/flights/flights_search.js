@@ -6,8 +6,13 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.airports = options.airports;
     this.queryParams = this.parseQueryString(options.queryString);
+    this.airports = new AeroBnb.Collections.Airports();
+    this.queryParams["airport"] && this.queryParams["airport"].forEach(function (id) {
+      var model = new AeroBnb.Models.Airport({ id: id });
+      model.fetch();
+      this.airports.add(model);
+    }.bind(this))
     this.search(this.queryParams);
   },
 
@@ -40,8 +45,9 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
         success: function () {
           this.map = window.map;
           var airportLoc = this.locateAirport(airport);
-          google.maps.event.addListener(this.map, 'bounds_changed', this.markAirports.bind(this));
+          this.startMapListener();
           this.map.setCenter(airportLoc);
+          this.markAirports();
         }.bind(this)
       })
     }
@@ -49,6 +55,11 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
 
   getAirports: function (event) {
     console.log(this.map.getBounds());
+  },
+
+  startMapListener: function () {
+    google.maps.event.addListener(this.map, 'dragend', this.markAirports.bind(this));
+    google.maps.event.addListener(this.map, 'zoom_changed', this.markAirports.bind(this));
   },
 
   locateAirport: function (airport) {
@@ -114,7 +125,9 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
     var pairStrings = string.split('&');
     _.each(pairStrings, function (pairString) {
       var pair = pairString.split('=')
-      if (pair[1]) {
+      if (pair[1] && pair[1] !== '' && pair[0] === "airport") {
+        params[pair[0]] = pair[1].split(",")
+      } else if (pair[1] && pair[1] !== '') {
         params[pair[0]] = pair[1];
       }
     })

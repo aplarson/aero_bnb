@@ -1,0 +1,7 @@
+<div class="form-group">
+  <% airports.each(function (airport) { %>
+    <label><%= airport.escape('name') %>
+      <input name="airport" value="<%= airport.id %>" type="checkbox" class="form-control" checked>
+    </label>
+  <% }); %>
+</div>
