@@ -40,9 +40,8 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
         success: function () {
           this.map = window.map;
           var airportLoc = this.locateAirport(airport);
-          this.map.setCenter(airportLoc);
-          this.markAirports();
           google.maps.event.addListener(this.map, 'bounds_changed', this.markAirports.bind(this));
+          this.map.setCenter(airportLoc);
         }.bind(this)
       })
     }
