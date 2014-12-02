@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:show, :update]
     resources :reservations, only: [:index, :show, :create, :destroy]
-    resources :airports
+    resources :airports do
+      collection do
+        get 'search'
+      end
+    end
   end
 end
