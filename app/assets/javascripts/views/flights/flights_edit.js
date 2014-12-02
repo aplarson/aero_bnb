@@ -2,7 +2,8 @@ AeroBnb.Views.FlightsEdit = Backbone.View.extend({
   template: JST["flights/form"],
 
   events: {
-    'submit .flight-form': 'updateFlight'
+    'click #submit-button': 'updateFlight',
+    'click #filepicker': 'uploadImage'
   },
 
   initialize: function (options) {
@@ -18,11 +19,23 @@ AeroBnb.Views.FlightsEdit = Backbone.View.extend({
 
   updateFlight: function (event) {
     event.preventDefault();
-    var params = $(event.target).serializeJSON();
+    var params = this.$('.flight-form').serializeJSON();
+
     this.flight.save(params["flight"], {
       success: function (response) {
         Backbone.history.navigate('flights/' + response.id, { trigger: true });
       }
     })
+  },
+
+  uploadImage: function (event) {
+    event.preventDefault();
+    filepicker.pick({
+        mimetype: 'image/*'
+      },
+      function (Blob) {
+       this.flight.set('photo_url', Blob.url); 
+      }.bind(this)
+    );
   }
 });

@@ -62,6 +62,7 @@ class Api::FlightsController < Api::ApiController
                                    :aircraft, 
                                    :description,
                                    :passengers, 
-                                   :price)
+                                   :price,
+                                   :photo_url)
   end
 end

@@ -17,8 +17,9 @@ AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
   },
 
   events: {
-    'submit .flight-form': 'newFlight',
-    'click #new-airport-link': 'newAirport'
+    'click #submit-button': 'newFlight',
+    'click #new-airport-link': 'newAirport',
+    'click #filepicker': 'uploadImage'
   },
 
   newAirport: function (event) {
@@ -28,12 +29,23 @@ AeroBnb.Views.FlightsNew = Backbone.CompositeView.extend({
 
   newFlight: function (event) {
     event.preventDefault();
-    var params = $(event.target).serializeJSON();
+    var params = this.$('.flight-form').serializeJSON();
     var flight = new AeroBnb.Models.Flight(params["flight"]);
     flight.save([], {
       success: function (response) {
         Backbone.history.navigate('flights/' + response.id, { trigger: true });
       }
     })
+  },
+
+  uploadImage: function (event) {
+    event.preventDefault();
+    filepicker.pick({
+        mimetype: 'image/*'
+      },
+      function (Blob) {
+       this.flight.set('photo_url', Blob.url); 
+      }.bind(this)
+    );
   }
 })

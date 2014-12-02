@@ -1,1 +1,1 @@
-json.array!(@flights, :id, :owner, :departure_date, :aircraft, :price, :passengers, :departure_airport)
+json.array!(@flights, :id, :owner, :departure_date, :aircraft, :price, :passengers, :photo_url, :departure_airport)

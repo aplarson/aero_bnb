@@ -1,6 +1,6 @@
 <div class="search-item">
 
-  <div class="small-flight-picture"><img src="http://placekitten.com/g/300/200"></div>
+  <div class="small-flight-picture"><img src="<%= flight.get('photo_url') %>"></div>
 
   <p><%= flight.escape("aircraft") %>, <%= flight.departureAirport.escape('name') %></p>
 
