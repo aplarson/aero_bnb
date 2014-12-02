@@ -5,7 +5,7 @@ AeroBnb.Views.FlightsIndex = Backbone.CompositeView.extend({
     this.flights = new AeroBnb.Collections.Flights();
     this.flights.fetch();
     this.listenTo(this.flights, 'add', this.addFlight);
-    this.listenTo(this.flights, 'sync', this.addFlights)
+    this.listenTo(this.flights, 'sync', this.render)
   },
 
   render: function () {
