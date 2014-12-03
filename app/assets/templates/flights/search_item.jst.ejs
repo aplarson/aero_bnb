@@ -1,9 +1,12 @@
 <div class="search-item">
 
-  <div class="small-flight-picture"><img src="<%= flight.get('photo_url') %>"></div>
+  <div class="small-flight-picture"><img class="flight-thumbnail" src="<%= flight.get('photo_url') %>"></div>
+
+  <div class="price">$<%= flight.escape("price") %></div>
 
   <img class="profile-thumbnail search-owner" src="<%= flight.owner.escape('photo_url') %>">
 
-  <p><%= flight.escape("aircraft") %>, <%= flight.departureAirport.escape('name') %></p>
+  <p><%= flight.escape("aircraft") %></p>
+  <p><%= flight.departureAirport.escape('name') %> - <%= flight.escape('departure_date') %></p>
 
 </div>
