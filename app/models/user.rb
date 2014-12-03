@@ -26,10 +26,11 @@ class User < ActiveRecord::Base
     :owned_flights,
     class_name: "Flight",
     foreign_key: :owner_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
 
   has_many :reserved_flights, through: :reservations, source: :flight
   

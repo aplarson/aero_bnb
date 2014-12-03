@@ -20,6 +20,7 @@ class Airport < ActiveRecord::Base
     :departures,
     class_name: "Flight",
     foreign_key: :departure_airport_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 end
