@@ -1,5 +1,13 @@
 <div class="container new">
 
+  <% if flash[:errors] %>
+    <ul class="errors">
+      <% flash[:errors].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <h1 class="form">Sign up to share flights!</h1>
   
   <form action="<%= users_url %>" method="POST" class="form">

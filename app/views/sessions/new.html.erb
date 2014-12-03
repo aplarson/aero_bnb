@@ -1,5 +1,13 @@
 <div class="container new">
 
+  <% if flash[:errors] %>
+    <ul class="errors">
+      <% flash[:errors].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <h1 class="form">Sign In</h1>
 
   <form action="<%= session_url %>" method="POST" class="form">
