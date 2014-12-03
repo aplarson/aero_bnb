@@ -32,7 +32,7 @@ AeroBnb.Views.CommentsIndex = Backbone.CompositeView.extend({
     event.preventDefault();
     var params = $(event.target).serializeJSON();
     params["comment"]["commentable_id"] = this.owner.id;
-    params["comment"]["commentable_type"] = "Flight";
+    params["comment"]["commentable_type"] = this.owner.commentableType;
     var comment = new AeroBnb.Models.Comment(params["comment"]);
     comment.save([], {
       success: function (response) {

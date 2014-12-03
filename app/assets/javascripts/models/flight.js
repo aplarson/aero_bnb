@@ -1,6 +1,8 @@
 AeroBnb.Models.Flight = Backbone.Model.extend({
   urlRoot: '/api/flights',
 
+  commentableType: "Flight",
+
   comments: function () {
     if (!this._comments) {
       this._comments = new AeroBnb.Collections.Comments();
