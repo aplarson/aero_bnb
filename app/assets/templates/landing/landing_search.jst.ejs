@@ -1,16 +1,20 @@
 <form id="landing-search-form" class="form-inline">
   <div class="form-group">
-    <label id="airport-select">Where are you coming from?
-      <input type="text" name="airport_name" id="airport-name">
-    </label>
+    <label><span class="landing-label">I want to fly from</span>
+    <input type="text" 
+           name="airport_name" 
+           id="airport-name" 
+           class="form-control landing-input">
     <input type="hidden" name="airport" id="airport-id">
   </div>
 
   <div class="form-group">
-    <label><span class="search-label">When do you want to fly?</span>
-      <input type="date" name="departure_date">
-    </label>
+    <label><span class="landing-label">on </span>
+      <input type="date" name="departure_date" class="form-control">
+    </span>
   </div>
-
-  <input type="submit" value="Fly!" class="btn btn-primary">
+  
+  <div class="form-group landing-btn">
+    <input type="submit" value="Fly!" class="btn btn-primary">
+  </div>
 </form>

@@ -20,13 +20,11 @@
 }
 
 #landing-search-bar {
-  bottom: 20%;
+  bottom: 0%;
   position: absolute;
   width: 100%;
-}
-
-.search-label {
-  color: red;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 50px;
 }
 
 #landing-search-form {
@@ -35,4 +33,12 @@
 
 .form {
   text-align: center;
+}
+
+.landing-label {
+  color: white;
+}
+
+div.form-group.landing-btn {
+  vertical-align: top;
 }
