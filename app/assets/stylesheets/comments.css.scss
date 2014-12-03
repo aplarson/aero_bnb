@@ -1,3 +1,22 @@
 .comments {
-  border: 1px solid grey;
+  text-align: left;
+}
+
+.comment-content {
+  display: inline-block;
+  padding: 5px;
+  vertical-align: top;
+}
+
+.comment-body {
+  border-bottom: 1px solid grey;
+  width: 75%;
+}
+
+.comment-author {
+  width: 20%;
+}
+
+.comment-content img {
+  display: block;
 }

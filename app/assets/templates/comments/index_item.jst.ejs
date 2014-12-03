@@ -1,7 +1,8 @@
-<div class="comment-author">
-  Who wrote this
+<div class="comment-author comment-content">
+  <img src="<%= comment.author.escape('photo_url') %>" class="profile-thumbnail">
+  <span><%= comment.author.escape("username") %></span>
 </div>
 
-<div class="comment-body">
+<div class="comment-body comment-content">
   <p><%= comment.escape("content") %></p>
 </div>

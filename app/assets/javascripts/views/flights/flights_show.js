@@ -5,16 +5,9 @@ AeroBnb.Views.FlightsShow = Backbone.CompositeView.extend({
     this.flight = options.flight;
     this.flight.fetch({
       success: function () {
-        var commentsView = new AeroBnb.Views.CommentsIndex({
-          comments: this.flight.comments().sort(), 
-          owner: this.flight
-        });
-        this.addSubview("#comments", commentsView);
+        this.populateSubviews();
       }.bind(this)
     });
-    var bookingView = new AeroBnb.Views.ReservationsBooking({ flight: this.flight });
-    this.addSubview("#booking-panel", bookingView)
-
     this.listenTo(this.flight, 'sync', this.render)
   },
 
@@ -24,5 +17,15 @@ AeroBnb.Views.FlightsShow = Backbone.CompositeView.extend({
 
     this.attachSubviews();
     return this;
+  },
+
+  populateSubviews: function () {
+    var commentsView = new AeroBnb.Views.CommentsIndex({
+      comments: this.flight.comments().sort(), 
+      owner: this.flight
+    });
+    this.addSubview("#comments", commentsView);
+    var bookingView = new AeroBnb.Views.ReservationsBooking({ flight: this.flight });
+    this.addSubview("#booking-panel", bookingView)
   }
 })

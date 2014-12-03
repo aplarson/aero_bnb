@@ -3,7 +3,7 @@ class Api::CommentsController < Api::ApiController
     @comment = Comment.new(comment_params)
     @comment.author_id = current_user.id
     if @comment.save
-      render json: @comment
+      render :show
     else
       render json: @comment.errors, status: 422
     end
