@@ -37,6 +37,7 @@ AeroBnb.Views.CommentsIndex = Backbone.CompositeView.extend({
     comment.save([], {
       success: function (response) {
         this.comments.add(comment);
+        this.$('textarea').val('');
       }.bind(this)
     })
   }
