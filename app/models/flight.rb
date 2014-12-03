@@ -12,7 +12,7 @@
 #  description          :text
 #  passengers           :integer          not null
 #  price                :integer          not null
-#  photo_url            :string(255)      default("default_plane.jpg"), not null
+#  photo_url            :string(255)      default("/assets/default_plane.jpg"), not null
 #
 
 class Flight < ActiveRecord::Base

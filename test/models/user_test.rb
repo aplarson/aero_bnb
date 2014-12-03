@@ -10,7 +10,7 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  description     :text
-#  photo_url       :string(255)
+#  photo_url       :string(255)      default("/assets/profile_default.jpg"), not null
 #
 
 require 'test_helper'
