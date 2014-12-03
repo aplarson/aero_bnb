@@ -4,6 +4,8 @@
 
 #main {
   min-height: 500px;
+  padding: 0;
+  text-align: center;
 }
 
 #map-canvas {
@@ -37,4 +39,9 @@ nav.navbar {
   background-size: 100% auto;
   min-height: 600px;
   position: relative;
+}
+
+textarea.form-control.description {
+  width: 300px;
+  height: 100px;
 }

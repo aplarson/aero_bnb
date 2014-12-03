@@ -5,12 +5,13 @@
 }
 
 #landing-title {
-  font-size: 5em;
-  color: red;
+  margin: 0;
+  font-size: 6em;
+  color: white;
   font-weight: bold;
 }
 
-#landing-main {
+.form-background {
   background-image: url('landing_dc_3.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -22,9 +23,12 @@
 #landing-search-bar {
   bottom: 0%;
   position: absolute;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
   padding: 50px;
+}
+
+.landing-element {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
 }
 
 #landing-search-form {
@@ -37,6 +41,10 @@
 
 .landing-label {
   color: white;
+}
+
+.landing-title-bar {
+  top: 0%;
 }
 
 div.form-group.landing-btn {
