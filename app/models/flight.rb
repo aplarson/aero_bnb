@@ -37,4 +37,12 @@ class Flight < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   has_many :commenters, through: :comments, source: :author
+
+  def reserved_seats
+    seats_taken = 0
+    reservations.each do |reservation|
+      seats_taken += reservation.passengers
+    end
+    seats_taken
+  end
 end

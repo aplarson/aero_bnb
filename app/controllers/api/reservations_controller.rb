@@ -5,7 +5,7 @@ class Api::ReservationsController < Api::ApiController
     if @reservation.save
       render json: @reservation
     else
-      render json: @reservation.errors
+      render json: @reservation.errors, status: 422
     end
   end
 
