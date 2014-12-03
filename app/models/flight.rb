@@ -34,5 +34,5 @@ class Flight < ActiveRecord::Base
 
   has_many :booked_passengers, through: :reservations, source: :user
 
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 end
