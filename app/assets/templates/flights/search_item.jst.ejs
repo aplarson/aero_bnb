@@ -2,6 +2,8 @@
 
   <div class="small-flight-picture"><img src="<%= flight.get('photo_url') %>"></div>
 
+  <img class="profile-thumbnail search-owner" src="<%= flight.owner.escape('photo_url') %>">
+
   <p><%= flight.escape("aircraft") %>, <%= flight.departureAirport.escape('name') %></p>
 
 </div>
