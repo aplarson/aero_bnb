@@ -19,5 +19,6 @@ Rails.application.routes.draw do
         get 'name_search'
       end
     end
+    resources :comments, only: [:create]
   end
 end
