@@ -3,7 +3,8 @@ json.extract!(@flight, :id, :departure_date, :aircraft, :description, :price, :p
 json.owner @flight.owner, :username, :photo_url, :description
 
 json.comments @flight.comments do |comment|
+  author = @flight.commenters.find { |user| user.id == comment.author_id }
   json.content comment.content
   json.created_at comment.created_at
-  json.author comment.author, :username, :photo_url
+  json.author author, :username, :photo_url
 end
