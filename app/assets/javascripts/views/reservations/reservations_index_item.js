@@ -8,7 +8,8 @@ AeroBnb.Views.ReservationsIndexItem = Backbone.View.extend({
   },
 
   events: {
-    'click .index-container': 'showFlight'
+    'click .index-container': 'showFlight',
+    'click .btn-danger': 'cancelReservation'
   },
 
   render: function () {
@@ -17,7 +18,17 @@ AeroBnb.Views.ReservationsIndexItem = Backbone.View.extend({
     return this;
   },
 
+  cancelReservation: function (event) {
+    this.reservation.destroy({
+      success: function () {
+        this.remove();
+      }.bind(this)
+    });
+  },
+
   showFlight: function (event) {
-    Backbone.history.navigate('flights/' + this.reservation.flight.id, { trigger: true })
+    if (!($(event.target).hasClass('btn'))) {
+      Backbone.history.navigate('flights/' + this.reservation.flight.id, { trigger: true })
+    }
   }
 });
