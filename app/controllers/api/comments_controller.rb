@@ -5,7 +5,7 @@ class Api::CommentsController < Api::ApiController
     if @comment.save
       render json: @comment
     else
-      render json: @comment.errors
+      render json: @comment.errors, status: 422
     end
   end
 

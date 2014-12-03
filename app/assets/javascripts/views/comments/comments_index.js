@@ -9,7 +9,7 @@ AeroBnb.Views.CommentsIndex = Backbone.CompositeView.extend({
     }.bind(this));
     var formView = new AeroBnb.Views.CommentForm();
     this.addSubview('#comment-form', formView);
-    listenTo(this.comments, 'add', addComment);
+    this.listenTo(this.comments, 'add', this.addComment);
   },
 
   events: {
@@ -31,10 +31,9 @@ AeroBnb.Views.CommentsIndex = Backbone.CompositeView.extend({
   saveComment: function (event) {
     event.preventDefault();
     var params = $(event.target).serializeJSON();
-    params["comment"]["commentable_id"] = owner.id;
+    params["comment"]["commentable_id"] = this.owner.id;
     params["comment"]["commentable_type"] = "Flight";
     var comment = new AeroBnb.Models.Comment(params["comment"]);
-    debugger
     comment.save([], {
       success: function (response) {
         this.comments.add(comment);

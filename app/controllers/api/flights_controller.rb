@@ -20,7 +20,7 @@ class Api::FlightsController < Api::ApiController
   end
 
   def show
-    @flight = Flight.includes(:departure_airport).find(params[:id])
+    @flight = Flight.includes(:departure_airport).includes(:comments).find(params[:id])
   end
 
   def search
