@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
   has_many :reservations, dependent: :destroy
 
   has_many :reserved_flights, through: :reservations, source: :flight
+
+  has_many :authored_comments, class_name: "Comment", foreign_key: :author_id, dependent: :destroy
+
+  has_many :comments, as: :commentable, dependent: :destroy
   
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
