@@ -61,6 +61,7 @@ AeroBnb.Routers.Router = Backbone.Router.extend({
   searchFlights: function (params) {
     var view = new AeroBnb.Views.FlightsSearch({ queryString: params, airports: this.airports });
     this.swapView(view);
+    view.createMap();
   },
 
   showFlight: function (id) {
