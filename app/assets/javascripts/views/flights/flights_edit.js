@@ -3,7 +3,8 @@ AeroBnb.Views.FlightsEdit = Backbone.View.extend({
 
   events: {
     'click #submit-button': 'updateFlight',
-    'click #filepicker': 'uploadImage'
+    'click #filepicker': 'uploadImage',
+    'click #new-airport-link': 'newAirport'
   },
 
   initialize: function (options) {
@@ -28,6 +29,11 @@ AeroBnb.Views.FlightsEdit = Backbone.View.extend({
       errorList.append(errorText);
     })
     $('#errors').html(errorList);
+  },
+
+  newAirport: function (event) {
+    var view = new AeroBnb.Views.AirportsNew({ airports: this.airports });
+    this.$('#airport-creation').html(view.render().$el);
   },
 
   selectAirport: function (event, ui) {
