@@ -18,6 +18,15 @@ AeroBnb.Views.FlightsNew = Backbone.View.extend({
     'click #filepicker': 'uploadImage'
   },
 
+  displayErrors: function (response) {
+    var errorList = $('<ul>').addClass("error-list")
+    _(response.responseJSON).each(function (error) {
+      var errorText = $('<li>').html(error);
+      errorList.append(errorText);
+    })
+    $('#errors').html(errorList);
+  },
+
   newAirport: function (event) {
     var view = new AeroBnb.Views.AirportsNew({ airports: this.airports });
     this.$('#airport-creation').html(view.render().$el);
@@ -30,7 +39,10 @@ AeroBnb.Views.FlightsNew = Backbone.View.extend({
     flight.save([], {
       success: function (response) {
         Backbone.history.navigate('flights/' + response.id, { trigger: true });
-      }
+      },
+      error: function (model, response) {
+        this.displayErrors(response);
+      }.bind(this)
     })
   },
 

@@ -50,7 +50,7 @@ class Api::FlightsController < Api::ApiController
     elsif @flight.update(flight_params)
       render json: @flight
     else
-      render json: @flight.errors, status: 422
+      render json: @flight.errors.full_messages, status: 422
     end
   end
 

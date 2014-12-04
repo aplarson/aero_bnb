@@ -14,12 +14,20 @@ AeroBnb.Views.FlightsEdit = Backbone.View.extend({
   render: function () {
     var content = this.template({ flight: this.flight });
     this.$el.html(content);
-
     this.$('#airport-name').autocomplete({ 
       source: '/api/airports/names',
       select: this.selectAirport.bind(this)
     });
     return this;
+  },
+
+  displayErrors: function (response) {
+    var errorList = $('<ul>').addClass("error-list")
+    _(response.responseJSON).each(function (error) {
+      var errorText = $('<li>').html(error);
+      errorList.append(errorText);
+    })
+    $('#errors').html(errorList);
   },
 
   selectAirport: function (event, ui) {
@@ -43,7 +51,10 @@ AeroBnb.Views.FlightsEdit = Backbone.View.extend({
     this.flight.save(params["flight"], {
       success: function (response) {
         Backbone.history.navigate('flights/' + response.id, { trigger: true });
-      }
+      },
+      error: function (model, response) {
+        this.displayErrors(response);
+      }.bind(this)
     })
   },
 

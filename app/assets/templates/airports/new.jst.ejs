@@ -1,32 +1,34 @@
 <form id="new-airport-form">
   <div class="form-group">
     <label>Name
-      <input type="text" name="airport[name]" class="form-control">
+      <input type="text" name="airport[name]" class="form-control" id="name">
     </label>
+    <ul class="error-list" id="name-errors">
+    </ul>
   </div>
 
   <div class="form-group">
     <label>ICAO Code
-      <input type="text" name="airport[icao_code]" class="form-control">
+      <input type="text" name="airport[icao_code]" class="form-control" id="icao_code">
     </label>
-  </div>
-
-  <div class="form-group">
-    <label>IATA Code
-      <input type="text" name="airport[iata_code]" class="form-control">
-    </label>
+    <ul class="error-list" id="icao_code-errors">
+    </ul>
   </div>
 
   <div class="form-group">
     <label>Latitude (North is positive, South negative)
-      <input type="number" name="airport[latitude]" class="form-control" step="any">
+      <input type="number" name="airport[latitude]" class="form-control" step="any" id="latitude">
     </label>
+    <ul class="error-list" id="latitude-errors">
+    </ul>
   </div>
 
   <div class="form-group">
     <label>Longitude (East is positive, West negative)
-      <input type="number" name="airport[longitude]" class="form-control" step="any">
+      <input type="number" name="airport[longitude]" class="form-control" step="any" id="longitude">
     </label>
+    <ul class="error-list" id="longitude-errors">
+    </ul>
   </div>
 
   <input type="submit" class="btn btn-primary" value="Add airport">

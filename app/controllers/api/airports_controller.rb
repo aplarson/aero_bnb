@@ -4,7 +4,7 @@ class Api::AirportsController < Api::ApiController
     if @airport.save
       render json: @airport
     else
-      render json: @airport.errors
+      render json: @airport.errors, status: 422
     end
   end
 

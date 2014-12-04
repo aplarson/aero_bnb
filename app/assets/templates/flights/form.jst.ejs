@@ -1,4 +1,6 @@
 <div class="form-background">
+  <div id="errors">
+  </div>
   <div id="form-container" class="form-container">
     <h1>Post a flight</h1>
 
@@ -38,15 +40,25 @@
 
       <div class="form-group">
         <label>Departure Airport
-          <input type="text" name="airport_name" id="airport-name" class="form-control">
+          <input type="text" 
+                 name="airport_name" 
+                 id="airport-name" 
+                 class="form-control"
+                 <% if (flight.departureAirport) { %>
+                   value="<%= flight.departureAirport.escape("name")%>"
+                 <% } %>
+                 >
         </label>
         <input type="hidden" 
                name="flight[departure_airport_id]" 
-               id="airport-id" 
-               value="<%= flight.escape('departure_airport_id') %>">
+               id="airport-id"
+               <% if (flight.departureAirport) { %>
+                 value="<%= flight.departureAirport.id %>"
+               <% } %>
+               >
       </div>
 
-      <div id="airport-creation">
+      <div>
         <p>Don't see your airport? <a href="javascript:void(0)" id="new-airport-link">Add it!</a></p>
       </div>
 
@@ -72,5 +84,8 @@
         <input type="submit" value="Post Flight!" class="btn btn-primary" id="submit-button">
       </div>
     </form>
+  </div>
+
+  <div class="form-container" id="airport-creation">
   </div>
 </div>

@@ -18,7 +18,21 @@ AeroBnb.Views.AirportsNew = Backbone.View.extend({
     airport.save({}, {
       success: function () {
         this.remove();
+      }.bind(this),
+
+      error: function (model, response) {
+        this.displayErrors(response);
       }.bind(this)
+    })
+  },
+
+  displayErrors: function (response) {
+    var view = this;
+    _(response.responseJSON).each(function (errors, field) {
+      _(errors).each(function (error) {
+        var errorText = $('<li>').html(error);
+        view.$('#' + field + '-errors').append(errorText);
+      })
     })
   }
 });
