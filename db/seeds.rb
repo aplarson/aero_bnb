@@ -23,7 +23,6 @@ Airport.create!([
   {icao_code: "KSQL", iata_code: nil, name: "San Carlos Airport", latitude: 37.5119, longitude: -122.2494},
   {icao_code: "KSTS", iata_code: nil, name: "Charles M. Schulz-Sonoma County Airport", latitude: 38.5089, longitude: -122.8128}
 ])
-])
 Flight.create!([
   {owner_id: 1, departure_date: "2014-12-17", departure_airport_id: 1, aircraft: "F-14", description: "Heated dogfight with Viper", passengers: 1, price: 1500, photo_url: "https://www.filepicker.io/api/file/zbw7cR3Q1WFR8JT7zUxI"},
   {owner_id: 1, departure_date: "2014-12-31", departure_airport_id: 1, aircraft: "F-18", description: "Getting familiar with a new plane.", passengers: 1, price: 1230, photo_url: "https://www.filepicker.io/api/file/GEmiyWETyyXLoHoyK7Xy"},
@@ -46,6 +45,7 @@ Comment.create!([
   {author_id: 6, commentable_id: 22, commentable_type: "Flight", content: "Maverick does things his own way, and that's usually a good thing. If you need special accommodation, or you're averse to buzzing towers, I would look elsewhere, though."},
   {author_id: 7, commentable_id: 27, commentable_type: "Flight", content: "Viper is an old friend of mine, and I was very excited when he told me he was going up in one of these. They're old, but sometimes its nice to ride in a classic. Highly recommended."},
   {author_id: 1, commentable_id: 26, commentable_type: "Flight", content: "Viper may not be quite as good a pilot as I am, but I always enjoy flying with him. He's happy to teach you about the plane, and he'll point anything important out as he sees it. I try to ride with him whenever I can."}
+])
 Reservation.create!([
   {flight_id: 24, user_id: 5, passengers: 1},
   {flight_id: 25, user_id: 7, passengers: 1},
