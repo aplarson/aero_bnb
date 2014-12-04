@@ -3,19 +3,16 @@
 }
 
 #main {
-  min-height: 500px;
   padding: 0;
   text-align: center;
 }
 
 #map-canvas {
   width: 40%;
-  height: 500px;
 }
 
 #search-container {
   width: 60%;
-  height: 500px;
   overflow-y: scroll;
   text-align: center;
 }
@@ -30,6 +27,7 @@
 
 nav.navbar {
   margin-bottom: 0px;
+  height: 10vh;
 }
 
 div.container.new {
@@ -37,7 +35,7 @@ div.container.new {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% auto;
-  min-height: 600px;
+  height: 90vh;
   width: 100%;
   position: relative;
   padding: 5px;
@@ -67,4 +65,3 @@ textarea.form-control.description {
   padding: 5px;
   list-style: none;
 }
-
