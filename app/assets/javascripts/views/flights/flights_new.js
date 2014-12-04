@@ -54,7 +54,8 @@ AeroBnb.Views.FlightsNew = Backbone.View.extend({
       dataType: 'json',
       data: { 'airport': { 'name': name } },
       success: function (response) {
-        view.$('#airport-id').val(response);
+        var airport = new AeroBnb.Models.Airport(response);
+        view.$('#airport-id').val(airport.id);
       }
     })
   },
