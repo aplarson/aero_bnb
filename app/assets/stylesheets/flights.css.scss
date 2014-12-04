@@ -1,5 +1,6 @@
 #large-flight-picture {
   height: 300px;
+  width: 100%;
   overflow: hidden;
   background: lightgrey;
 }
@@ -29,7 +30,7 @@
 }
 
 .index-title {
-  margin: auto;
+  padding: 5px;
   text-align: center;
 }
 
