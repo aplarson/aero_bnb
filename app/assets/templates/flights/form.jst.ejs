@@ -16,6 +16,10 @@
 
       <div class="form-group">
         <button class="btn btn-primary" id="filepicker">Upload an image</button>
+        <input type="hidden" 
+               name="flight[photo_url]" 
+               value="<%= flight.escape('photo_url') %>"
+               id="flight_photo_url">
       </div>
       
       <div class="form-group">
@@ -62,7 +66,7 @@
         <p>Don't see your airport? <a href="javascript:void(0)" id="new-airport-link">Add it!</a></p>
       </div>
 
-      <div class="form-container" id="airport-creation">
+      <div id="airport-creation">
       </div>
 
       <div class="form-group">

@@ -5,6 +5,11 @@
 #main {
   padding: 0;
   text-align: center;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 #map-canvas {
@@ -27,17 +32,19 @@
 
 nav.navbar {
   margin-bottom: 0px;
-  height: 10vh;
+  height: 50px;
 }
 
 div.container.new {
   background-image: url("sky.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100% auto;
-  height: 90vh;
+  background-size: 100%;
+  top: 50px;
+  left: 0;
+  bottom: 0;
   width: 100%;
-  position: relative;
+  position: fixed;
   padding: 5px;
   margin: 0;
 }

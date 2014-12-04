@@ -70,7 +70,7 @@ AeroBnb.Views.FlightsEdit = Backbone.View.extend({
         mimetype: 'image/*'
       },
       function (Blob) {
-       this.flight.set('photo_url', Blob.url); 
+        this.$('#flight_photo_url').val(Blob.url); 
       }.bind(this)
     );
   }
