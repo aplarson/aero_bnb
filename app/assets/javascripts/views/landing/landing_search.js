@@ -27,8 +27,10 @@ AeroBnb.Views.LandingSearch = Backbone.CompositeView.extend({
         queryEls.push(key + '=' + val)
       }
     })
-    var airport_location = [this.airport.escape('latitude'), this.airport.escape('longitude')]
-    queryEls.push("map_center=" + airport_location);
+    if (this.airport) {
+      var airport_location = [this.airport.escape('latitude'), this.airport.escape('longitude')]
+      queryEls.push("map_center=" + airport_location);
+    }
     var query = queryEls.join('&');
     Backbone.history.navigate('flights/search/' + query, { trigger: true })
   },

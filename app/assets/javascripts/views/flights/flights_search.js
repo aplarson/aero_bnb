@@ -44,9 +44,12 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   createMap: function () {
     if (this.queryParams["map_center"]) {
       var mapCenter = this.queryParams["map_center"].split(',');
+      var latitude = parseFloat(mapCenter[0]);
+      var longitude = parseFloat(mapCenter[1]);
+    } else {
+      var latitude = 37.6189;
+      var longitude = -122.3750;
     }
-    var latitude = parseFloat(mapCenter[0]) || 37.3628;
-    var longitude = parseFloat(mapCenter[1]) || -121.9292;
     var zoom = parseInt(this.queryParams["zoom"]) || 12;
     var mapOptions = {
       center: { lat: latitude, lng: longitude },
