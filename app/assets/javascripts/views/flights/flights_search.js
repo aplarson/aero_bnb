@@ -65,7 +65,6 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
 
   markAirports: function () {
     var bounds = this.map.getBounds();
-    debugger
     if (bounds) {
       var coords = bounds.toUrlValue().split(',');
       var namedCoords = {
@@ -161,7 +160,7 @@ AeroBnb.Views.FlightsSearch = Backbone.CompositeView.extend({
   startMapListener: function () {
     google.maps.event.addListener(this.map, 'dragend', this.markAirports.bind(this));
     google.maps.event.addListener(this.map, 'zoom_changed', this.markAirports.bind(this));
-    google.maps.event.addListener(this.map, 'tilesloaded', this.markAirports.bind(this));
+    google.maps.event.addListenerOnce(this.map, 'tilesloaded', this.markAirports.bind(this));
   },
 
   updateFilter: function () {
