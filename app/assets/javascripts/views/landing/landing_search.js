@@ -27,6 +27,8 @@ AeroBnb.Views.LandingSearch = Backbone.CompositeView.extend({
         queryEls.push(key + '=' + val)
       }
     })
+    var airport_location = [this.airport.escape('latitude'), this.airport.escape('longitude')]
+    queryEls.push("map_center=" + airport_location);
     var query = queryEls.join('&');
     Backbone.history.navigate('flights/search/' + query, { trigger: true })
   },
@@ -39,8 +41,8 @@ AeroBnb.Views.LandingSearch = Backbone.CompositeView.extend({
       dataType: 'json',
       data: { 'airport': { 'name': name } },
       success: function (response) {
-        this.airport = new AeroBnb.Models.Airport(response);
-        view.$('#airport-id').val(this.airport.id);
+        view.airport = new AeroBnb.Models.Airport(response);
+        view.$('#airport-id').val(view.airport.id);
       }
     })
   }
