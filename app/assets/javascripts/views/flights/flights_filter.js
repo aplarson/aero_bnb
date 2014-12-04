@@ -13,12 +13,12 @@ AeroBnb.Views.FlightsFilter = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({ params: this.queryParams });
     this.$el.html(content);
-    var maxPrice = this.queryParams["max_price"] || 5000;
+    var maxPrice = this.queryParams["max_price"] || 2000;
     var minPrice = this.queryParams["min_price"] || 0;
     this.$('#price-filter').slider({
       range: true,
       min: 0,
-      max: 5000,
+      max: 2000,
       values: [minPrice, maxPrice],
       step: 5,
       slide: this.updatePrice.bind(this),
