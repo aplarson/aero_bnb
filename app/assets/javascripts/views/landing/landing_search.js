@@ -39,7 +39,8 @@ AeroBnb.Views.LandingSearch = Backbone.CompositeView.extend({
       dataType: 'json',
       data: { 'airport': { 'name': name } },
       success: function (response) {
-        view.$('#airport-id').val(response);
+        this.airport = new AeroBnb.Models.Airport(response);
+        view.$('#airport-id').val(this.airport.id);
       }
     })
   }

@@ -34,7 +34,7 @@ class Api::AirportsController < Api::ApiController
 
   def name_search
     @airports = Airport.where("name = ?", params[:airport][:name])
-    render json: @airports.first.id
+    render json: @airports.first
   end
 
   private
