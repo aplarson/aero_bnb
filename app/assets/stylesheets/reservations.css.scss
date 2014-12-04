@@ -1,3 +1,20 @@
 .index-list {
   list-style: none;
 }
+
+.booking-title {
+  margin: 0;
+  padding: 5px;
+  background: grey;
+  color: white;
+}
+
+#booking-panel {
+  width: 30%;
+  float: left;;
+  padding: 0px;
+}
+
+.btn.booking-btn {
+  width: 100%;
+}

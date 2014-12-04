@@ -1,4 +1,4 @@
-<h3>Book this flight for $<%= flight.escape('price') %></h3>
+<h3 class="booking-title">Book this flight for $<%= flight.escape('price') %></h3>
 
 <p>Departing <%= flight.escape('departure_date') %></p>
 
@@ -12,6 +12,6 @@
     <input type="hidden" name="reservation[flight_id]" value="<%= flight.id %>">
 
   <div class="form-group">
-    <input type="submit" class="btn btn-primary" value="Make reservation!">
+    <input type="submit" class="btn btn-primary booking-btn" value="Make reservation!">
   </div>
 </form>

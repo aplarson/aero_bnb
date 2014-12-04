@@ -6,7 +6,9 @@
 
   <img class="profile-thumbnail search-owner" src="<%= flight.owner.escape('photo_url') %>">
 
-  <p><%= flight.escape("aircraft") %></p>
-  <p><%= flight.departureAirport.escape('name') %> - <%= flight.escape('departure_date') %></p>
+  <div class="flight-details">
+    <p><%= flight.escape("aircraft") %></p>
+    <p><%= flight.departureAirport.escape('name') %> - <%= flight.escape('departure_date') %></p>
+  </div>
 
 </div>
