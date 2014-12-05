@@ -1,10 +1,10 @@
 <div class="search-item">
 
-  <div class="small-flight-picture"><img class="flight-thumbnail" src="<%= flight.get('photo_url') %>"></div>
+  <div class="small-flight-picture"><img class="flight-thumbnail" src="<%= flight.get('photo_url') %>/convert?w=300"></div>
 
   <div class="price">$<%= flight.escape("price") %></div>
 
-  <img class="profile-thumbnail search-owner" src="<%= flight.owner.escape('photo_url') %>">
+  <img class="profile-thumbnail search-owner" src="<%= flight.owner.escape('photo_url') %>/convert?w=50&h=50&fit=scale">
 
   <div class="flight-details">
     <p><%= flight.escape("aircraft") %></p>

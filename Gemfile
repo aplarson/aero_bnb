@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'rack-zippy'
 gem 'sprockets-image_compressor'
 gem 'backbone-on-rails'
-
+gem 'kaminari'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
