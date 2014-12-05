@@ -1,14 +1,16 @@
 <div class="form-group">
   <% airports.each(function (airport) { %>
-    <label><%= airport.escape('name') %>
-      <input name="airport[]" 
-             value="<%= airport.id %>"
-             type="checkbox" 
-             class="form-control"
-             <% if (_.contains(selected, airport.id)) { %>
-               checked
-             <% } %>
-             >
-    </label>
+    <div class="airport-checkbox">
+      <label class="checkbox"><%= airport.escape('name') %>
+        <input name="airport[]" 
+               value="<%= airport.id %>"
+               type="checkbox" 
+               class="form-control"
+               <% if (_.contains(selected, airport.id)) { %>
+                 checked
+               <% } %>
+               >
+      </label>
+    </div>
   <% }); %>
 </div>

@@ -13,7 +13,9 @@
 
     <% if (flight.owner) { %>
       <div id="owner-details">
-        <img src="<%= flight.owner.get('photo_url') %>" class="profile-thumbnail">
+        <div class="profile-thumbnail">
+          <img src="<%= flight.owner.get('photo_url') %>/convert?w=50">
+        </div>
         <h3 class="flight-owner">Pilot: <%= flight.owner.escape('username') %></h3>
         <p><%= flight.owner.escape('description') %></p>
       </div>

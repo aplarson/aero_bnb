@@ -4,7 +4,9 @@
 
   <div class="price">$<%= flight.escape("price") %></div>
 
-  <img class="profile-thumbnail search-owner" src="<%= flight.owner.escape('photo_url') %>/convert?w=50&h=50&fit=scale">
+  <div class="profile-thumbnail search-owner">
+    <img src="<%= flight.owner.escape('photo_url') %>/convert?w=50">
+  </div>
 
   <div class="flight-details">
     <p><%= flight.escape("aircraft") %></p>

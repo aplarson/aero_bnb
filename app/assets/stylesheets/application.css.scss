@@ -18,3 +18,9 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+input[type='checkbox']:focus{
+  outline: none;
+  border:none !important;
+  box-shadow:none !important;
+}

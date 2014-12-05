@@ -1,10 +1,17 @@
 <form class="form-inline" id="filter-form">
 
-  <div id="airport-select"></div>
+  <div class="filter-label">
+    <span class="filter-name">Airports</span>
+  </div>
+  <div id="airport-select" class="active-filters"></div>
 
-  <div id="date-filter">
+  <div class="filter-label">
+    <span class="filter-name">Date</span>
+  </div>
+
+  <div id="date-filter" class="active-filters">
     <div class="form-group">
-      <label>Departure Date
+      <label>Departure
         <input type="date" 
                class="form-control" 
                name="departure_date" 
@@ -21,7 +28,11 @@
       </label>
     </div>
   </div>
-  <div>
+
+  <div class="filter-label">
+    <span class="filter-name">Price Range</span>
+  </div>
+  <div class="active-filters">
     <div id="price-filter">
     </div>
     <p>

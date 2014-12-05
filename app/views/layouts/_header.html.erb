@@ -10,7 +10,7 @@
       <% if logged_in? %>
         <li><%= link_to "Flights", '#flights' %></li>
         <li><%= link_to "Reservations", '#reservations' %></li>
-        <li><img src="<%= current_user.photo_url %>" class="profile-thumbnail"></li>
+        <li><img src="<%= current_user.photo_url %>/convert?w=50" class="profile-thumbnail"></li>
         <li><%= link_to current_user.username, '#users/edit' %></li>
         <li><%= link_to "Sign out", session_url, method: :delete %></li>
         <li><%= link_to "List a flight", '#flights/new' %></li>
