@@ -1,5 +1,5 @@
 <div id="large-flight-picture">
-  <img src="<%= flight.get('photo_url') %>" class="flight-show-image">
+  <img src="<%= flight.get('photo_url') %>/convert?&compress=true" class="flight-show-image">
 </div>
 
 <div id="listing-details">
@@ -14,7 +14,7 @@
     <% if (flight.owner) { %>
       <div id="owner-details">
         <div class="profile-thumbnail">
-          <img src="<%= flight.owner.get('photo_url') %>/convert?w=50">
+          <img src="<%= flight.owner.get('photo_url') %>/convert?w=50&h=50&compress=true">
         </div>
         <h3 class="flight-owner">Pilot: <%= flight.owner.escape('username') %></h3>
         <p><%= flight.owner.escape('description') %></p>

@@ -1,11 +1,11 @@
 <div class="search-item">
 
-  <div class="small-flight-picture"><img class="flight-thumbnail" src="<%= flight.get('photo_url') %>/convert?w=300"></div>
+  <div class="small-flight-picture"><img class="flight-thumbnail" src="<%= flight.get('photo_url') %>/convert?w=300&compress=true"></div>
 
   <div class="price">$<%= flight.escape("price") %></div>
 
   <div class="profile-thumbnail search-owner">
-    <img src="<%= flight.owner.escape('photo_url') %>/convert?w=50">
+    <img src="<%= flight.owner.escape('photo_url') %>/convert?w=50&compress=true">
   </div>
 
   <div class="flight-details">
