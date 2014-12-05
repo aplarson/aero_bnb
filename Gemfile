@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'spring',        group: :development
 
-gem 'newrelic_rpm'
+
 gem 'bcrypt', '~> 3.1.7'
 gem 'filepicker-rails'
 gem 'figaro'
