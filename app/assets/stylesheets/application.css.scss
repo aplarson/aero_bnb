@@ -12,7 +12,8 @@
  *
  *= require_tree .
  *= require_self
- *= require jquery.ui.all
+ *= require jquery.ui.autocomplete
+ *= require jquery.ui.slider
  */
 
 @import "bootstrap-sprockets";
