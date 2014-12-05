@@ -2,7 +2,7 @@ AeroBnb.Views.FlightsNew = Backbone.View.extend({
   template: JST["flights/form"],
 
   render: function () {
-    var content = this.template({ flight: new AeroBnb.Models.Flight() });
+    var content = this.template({ flight: new AeroBnb.Models.Flight({ photo_url: "https://www.filepicker.io/api/file/TOTgxUTGQeCekebondEu" }) });
     this.$el.html(content);
 
     this.$('#airport-name').autocomplete({ 
