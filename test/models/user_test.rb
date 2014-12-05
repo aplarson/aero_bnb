@@ -10,7 +10,7 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  description     :text
-#  photo_url       :string(255)      default("/assets/profile_default.jpg"), not null
+#  photo_url       :string(255)      default("https://www.filepicker.io/api/file/3I8YrKyhR4i8A4RAzZB6"), not null
 #
 
 require 'test_helper'
