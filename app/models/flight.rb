@@ -38,6 +38,26 @@ class Flight < ActiveRecord::Base
 
   has_many :commenters, through: :comments, source: :author
 
+  def self.search(params)
+    flights = Flight.includes(:departure_airport).includes(:owner).all
+    if params[:departure_date] && params[:departure_date] != ''
+      flights = flights.where('departure_date = ?', params[:departure_date])
+    end
+    if params[:min_price] && params[:min_price] != ''
+      flights = flights.where('price >= ?', params[:min_price])
+    end
+    if params[:max_price] && params[:max_price] != ''
+      flights = flights.where('price <= ?', params[:max_price])
+    end
+    if params[:passengers] && params[:passengers] != ''
+      flights = flights.where('passengers >= ?', params[:passengers])
+    end
+    if params[:airport] && params[:airport] != ''
+      flights = flights.where('departure_airport_id IN (?)', params[:airport])
+    end
+    flights
+  end
+
   def reserved_seats
     seats_taken = 0
     reservations.each do |reservation|

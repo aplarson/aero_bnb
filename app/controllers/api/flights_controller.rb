@@ -24,22 +24,7 @@ class Api::FlightsController < Api::ApiController
   end
 
   def search
-    @flights = Flight.includes(:departure_airport).includes(:owner).all
-    if params[:departure_date] && params[:departure_date] != ''
-      @flights = @flights.where('departure_date = ?', params[:departure_date])
-    end
-    if params[:min_price] && params[:min_price] != ''
-      @flights = @flights.where('price >= ?', params[:min_price])
-    end
-    if params[:max_price] && params[:max_price] != ''
-      @flights = @flights.where('price <= ?', params[:max_price])
-    end
-    if params[:passengers] && params[:passengers] != ''
-      @flights = @flights.where('passengers >= ?', params[:passengers])
-    end
-    if params[:airport] && params[:airport] != ''
-      @flights = @flights.where('departure_airport_id IN (?)', params[:airport])
-    end
+    @flights = Flight.search(params)
     render :index
   end
 
@@ -57,11 +42,11 @@ class Api::FlightsController < Api::ApiController
   private
 
   def flight_params
-    params.require(:flight).permit(:departure_airport_id, 
-                                   :departure_date, 
-                                   :aircraft, 
+    params.require(:flight).permit(:departure_airport_id,
+                                   :departure_date,
+                                   :aircraft,
                                    :description,
-                                   :passengers, 
+                                   :passengers,
                                    :price,
                                    :photo_url)
   end
