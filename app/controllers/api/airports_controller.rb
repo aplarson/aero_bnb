@@ -16,8 +16,7 @@ class Api::AirportsController < Api::ApiController
   #ignore searches in mid-Pacific for now
 
   def search
-    @airports = Airport.where("latitude BETWEEN ? AND ?", params[:south], params[:north])
-                       .where("longitude BETWEEN ? AND ?", params[:west], params[:east])
+    @airports = Airport.search(params)
     render json: @airports
   end
 

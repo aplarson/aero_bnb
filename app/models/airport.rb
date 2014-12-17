@@ -23,4 +23,9 @@ class Airport < ActiveRecord::Base
     primary_key: :id,
     dependent: :destroy
   )
+
+  def self.search(params)
+    Airport.where("latitude BETWEEN ? AND ?", params[:south], params[:north])
+    .where("longitude BETWEEN ? AND ?", params[:west], params[:east])
+  end
 end
