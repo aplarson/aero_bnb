@@ -25,7 +25,23 @@ class Airport < ActiveRecord::Base
   )
 
   def self.search(params)
-    Airport.where("latitude BETWEEN ? AND ?", params[:south], params[:north])
-    .where("longitude BETWEEN ? AND ?", params[:west], params[:east])
+    lat_search = Airport.where(
+                   "latitude BETWEEN ? AND ?",
+                   params[:south],
+                   params[:north]
+                 )
+    if params[:west] < params[:east]
+      lat_search.where(
+        "longitude BETWEEN ? AND ?",
+        params[:west],
+        params[:east]
+      )
+    else
+      lat_search.where(
+        "longitude > ? OR longitude < ?",
+        params[:west],
+        params[:east]
+      )
+    end
   end
 end

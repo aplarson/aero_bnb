@@ -13,8 +13,6 @@ class Api::AirportsController < Api::ApiController
     render json: @airports
   end
 
-  #ignore searches in mid-Pacific for now
-
   def search
     @airports = Airport.search(params)
     render json: @airports
