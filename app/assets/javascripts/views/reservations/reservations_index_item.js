@@ -9,7 +9,9 @@ AeroBnb.Views.ReservationsIndexItem = Backbone.View.extend({
 
   events: {
     'click .index-container': 'showFlight',
-    'click .btn-danger': 'cancelReservation'
+    'click #cancel': 'cancelReservation',
+    'click #confirm': 'confirmReservation',
+    'click #reject': 'rejectReservation'
   },
 
   render: function () {
@@ -23,6 +25,26 @@ AeroBnb.Views.ReservationsIndexItem = Backbone.View.extend({
       success: function () {
         this.remove();
       }.bind(this)
+    });
+  },
+
+  confirmReservation: function (event) {
+    $.ajax({
+      url: 'api/reservations/' + this.reservation.id + '/confirm',
+      method: 'patch',
+      success: function () {
+        alert("Confirmed!");
+      }
+    });
+  },
+
+  rejectReservation: function (event) {
+    $.ajax({
+      url: 'api/reservations/' + this.reservation.id + '/reject',
+      method: 'patch',
+      success: function () {
+        alert("Rejected!");
+      }
     });
   },
 

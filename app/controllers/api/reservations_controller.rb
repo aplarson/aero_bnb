@@ -1,7 +1,18 @@
 class Api::ReservationsController < Api::ApiController
+  def confirm
+    @reservation = Reservation.find(params[:id])
+    @reservation.confirmation_status = "CONFIRMED"
+    if @reservation.save
+      render json: @reservation
+    else
+      render json: @reservation.errors, status: 422
+    end
+  end
+
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
+    @reservation.confirmation_status = "UNCONFIRMED"
     if @reservation.save
       render json: @reservation
     else
@@ -13,6 +24,16 @@ class Api::ReservationsController < Api::ApiController
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
     render json: @reservation
+  end
+
+  def reject
+    @reservation = Reservation.find(params[:id])
+    @reservation.confirmation_status = "REJECTED"
+    if @reservation.save
+      render json: @reservation
+    else
+      render json: @reservation.errors, status: 422
+    end
   end
 
   def show

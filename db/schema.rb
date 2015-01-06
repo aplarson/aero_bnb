@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205214006) do
+ActiveRecord::Schema.define(version: 20150106191310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,11 +55,12 @@ ActiveRecord::Schema.define(version: 20141205214006) do
   add_index "flights", ["owner_id"], name: "index_flights_on_owner_id", using: :btree
 
   create_table "reservations", force: true do |t|
-    t.integer  "flight_id",  null: false
-    t.integer  "user_id",    null: false
-    t.integer  "passengers", null: false
+    t.integer  "flight_id",                                   null: false
+    t.integer  "user_id",                                     null: false
+    t.integer  "passengers",                                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "confirmation_status", default: "UNCONFIRMED", null: false
   end
 
   add_index "reservations", ["flight_id"], name: "index_reservations_on_flight_id", using: :btree
