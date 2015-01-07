@@ -1,1 +1,19 @@
-json.array!(@reservations, :id, :user_id, :passengers, :flight, :departure_airport)
+json.array!(
+  @reservations,
+  :id,
+  :user_id,
+  :passengers,
+  :flight,
+  :departure_airport,
+  :confirmation_status
+)
+
+json.array!(
+  @requested_reservations,
+  :id,
+  :user_id,
+  :passengers,
+  :flight,
+  :departure_airport,
+  :confirmation_status
+)
