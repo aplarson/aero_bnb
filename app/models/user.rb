@@ -34,10 +34,21 @@ class User < ActiveRecord::Base
 
   has_many :reserved_flights, through: :reservations, source: :flight
 
-  has_many :authored_comments, class_name: "Comment", foreign_key: :author_id, dependent: :destroy
+  has_many(
+    :owned_flight_reservations,
+    through: :owned_flights,
+    source: :reservations
+  )
+
+  has_many(
+    :authored_comments,
+    class_name: "Comment",
+    foreign_key: :author_id,
+    dependent: :destroy
+  )
 
   has_many :comments, as: :commentable, dependent: :destroy
-  
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     return user if user && user.is_password?(password)
@@ -65,6 +76,4 @@ class User < ActiveRecord::Base
     self.save
     self.session_token
   end
-
-
 end

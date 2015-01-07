@@ -16,7 +16,17 @@ AeroBnb.Views.ReservationsIndex = Backbone.CompositeView.extend({
   },
 
   addReservation: function (reservation) {
-    var view = new AeroBnb.Views.ReservationsIndexItem({ reservation: reservation });
-    this.addSubview('#reservation-index', view);
+    if (reservation.get('user_id') === window.currentUser) {
+      var ownedFlight = false;
+      var targetEl = '#reservation-index';
+    } else {
+      var ownedFlight = true;
+      var targetEl = '#reserved-flights-index';
+    }
+    var view = new AeroBnb.Views.ReservationsIndexItem({
+        reservation: reservation,
+        ownedFlight: ownedFlight
+      });
+    this.addSubview(targetEl, view)
   }
 });

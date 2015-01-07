@@ -42,7 +42,14 @@ class Api::ReservationsController < Api::ApiController
   end
 
   def index
-    @reservations = current_user.reservations.includes(:flight).includes(:departure_airport)
+    @reservations = current_user
+                      .reservations
+                      .includes(:flight)
+                      .includes(:departure_airport)
+    @requested_reservations = current_user
+                                .owned_flight_reservations
+                                .includes(:flight)
+                                .includes(:departure_airport)
   end
 
   private
